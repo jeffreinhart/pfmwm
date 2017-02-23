@@ -1,0 +1,100 @@
+D:/projects/web_app_template/logs/ProxyAttempts.txt
+D:/projects/web_app_template/logs/ProxyAttempts.txt
+Wednesday, November 16, 2016 3:15:46 PM
+URI: https://dev.dnr.state.mn.us/arcgis/rest/services/ewr/SpringInventory/FeatureServer/0?f=json&callback=dojo.io.script.jsonp_dojoIoScript2._jsonpCallback
+Referer: http://mrgw1585013/web_app_template/main.html
+IP: fe80::b9cd:71c0:c3fb:295e%24
+Host Header: mrgw1585013
+Remote Host: fe80::b9cd:71c0:c3fb:295e%24
+-------------------------------
+Thursday, November 17, 2016 10:05:54 AM
+URI: https://dev.dnr.state.mn.us/arcgis/rest/services/ewr/SpringInventory/FeatureServer/0?f=json&callback=dojo.io.script.jsonp_dojoIoScript2._jsonpCallback
+Referer: http://mrgw1585013/web_app_template/main.html
+IP: 156.98.28.211
+Host Header: mrgw1585013
+Remote Host: 156.98.28.211
+-------------------------------
+Monday, November 28, 2016 10:14:01 AM
+URI: https://dev.dnr.state.mn.us/arcgis/rest/services/ewr/SpringInventory/FeatureServer/0?f=json&callback=dojo.io.script.jsonp_dojoIoScript2._jsonpCallback
+Referer: http://mrgw1585013/web_app_template/main.html
+IP: 156.98.28.211
+Host Header: mrgw1585013
+Remote Host: 156.98.28.211
+-------------------------------
+Monday, November 28, 2016 10:18:14 AM
+URI: https://dev.dnr.state.mn.us/arcgis/rest/services/ewr/SpringInventory/FeatureServer/0?f=json&callback=dojo.io.script.jsonp_dojoIoScript2._jsonpCallback
+Referer: http://mrgw1585013/web_app_template/main.html
+IP: 156.98.28.211
+Host Header: mrgw1585013
+Remote Host: 156.98.28.211
+-------------------------------
+Monday, November 28, 2016 10:18:28 AM
+URI: https://dev.dnr.state.mn.us/arcgis/rest/services/ewr/SpringInventory/FeatureServer/0?f=json&callback=dojo.io.script.jsonp_dojoIoScript2._jsonpCallback
+Referer: http://mrgw1585013/web_app_template/main.html
+IP: 156.98.28.211
+Host Header: mrgw1585013
+Remote Host: 156.98.28.211
+-------------------------------
+Monday, November 28, 2016 10:18:34 AM
+URI: https://dev.dnr.state.mn.us/arcgis/rest/services/ewr/SpringInventory/FeatureServer/0?f=json&callback=dojo.io.script.jsonp_dojoIoScript2._jsonpCallback
+Referer: http://mrgw1585013/web_app_template/main.html
+IP: 156.98.28.211
+Host Header: mrgw1585013
+Remote Host: 156.98.28.211
+-------------------------------
+Monday, November 28, 2016 10:18:39 AM
+URI: https://dev.dnr.state.mn.us/arcgis/rest/services/ewr/SpringInventory/FeatureServer/0?f=json&callback=dojo.io.script.jsonp_dojoIoScript2._jsonpCallback
+Referer: http://mrgw1585013/web_app_template/main.html
+IP: 156.98.28.211
+Host Header: mrgw1585013
+Remote Host: 156.98.28.211
+-------------------------------
+Wednesday, December 07, 2016 1:22:51 PM
+URI: https://dev.dnr.state.mn.us/arcgis/rest/services/ewr/SpringInventory/FeatureServer/0?f=json&callback=dojo.io.script.jsonp_dojoIoScript2._jsonpCallback
+Referer: http://mrgw1585013/web_app_template/main.html
+IP: 156.98.28.211
+Host Header: mrgw1585013
+Remote Host: 156.98.28.211
+-------------------------------
+Wednesday, December 07, 2016 2:15:35 PM
+URI: https://dev.dnr.state.mn.us/arcgis/rest/services/ewr/SpringInventory/FeatureServer/0?f=json&callback=dojo.io.script.jsonp_dojoIoScript2._jsonpCallback
+Referer: http://mrgw1585013/web_app_template/main.html
+IP: 156.98.28.211
+Host Header: mrgw1585013
+Remote Host: 156.98.28.211
+-------------------------------
+Wednesday, December 07, 2016 2:28:31 PM
+URI: https://dev.dnr.state.mn.us/arcgis/rest/services/ewr/SpringInventory/FeatureServer/0?f=json&callback=dojo.io.script.jsonp_dojoIoScript2._jsonpCallback
+Referer: http://mrgw1585013/web_app_template/main.html
+IP: 156.98.28.211
+Host Header: mrgw1585013
+Remote Host: 156.98.28.211
+-------------------------------
+Wednesday, December 07, 2016 2:28:41 PM
+URI: https://dev.dnr.state.mn.us/arcgis/rest/services/ewr/SpringInventory/FeatureServer/0?f=json&callback=dojo.io.script.jsonp_dojoIoScript2._jsonpCallback
+Referer: http://mrgw1585013/web_app_template/main.html
+IP: 156.98.28.211
+Host Header: mrgw1585013
+Remote Host: 156.98.28.211
+-------------------------------
+Wednesday, December 07, 2016 2:31:51 PM
+URI: https://dev.dnr.state.mn.us/arcgis/rest/services/ewr/SpringInventory/FeatureServer/0?f=json&callback=dojo.io.script.jsonp_dojoIoScript2._jsonpCallback
+Referer: http://mrgw1585013/web_app_template/main.html
+IP: 156.98.28.211
+Host Header: mrgw1585013
+Remote Host: 156.98.28.211
+-------------------------------
+Wednesday, December 07, 2016 2:32:02 PM
+URI: https://dev.dnr.state.mn.us/arcgis/rest/services/ewr/SpringInventory/FeatureServer/0?f=json&callback=dojo.io.script.jsonp_dojoIoScript2._jsonpCallback
+Referer: http://mrgw1585013/web_app_template/main.html
+IP: 156.98.28.211
+Host Header: mrgw1585013
+Remote Host: 156.98.28.211
+-------------------------------
+Wednesday, December 07, 2016 2:32:17 PM
+URI: https://dev.dnr.state.mn.us/arcgis/rest/services/ewr/SpringInventory/FeatureServer/0?f=json&callback=dojo.io.script.jsonp_dojoIoScript2._jsonpCallback
+Referer: http://mrgw1585013/web_app_template/main.html
+IP: 156.98.28.211
+Host Header: mrgw1585013
+Remote Host: 156.98.28.211
+-------------------------------

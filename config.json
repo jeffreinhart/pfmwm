@@ -1,0 +1,36 @@
+{
+  "title": "Sample App",
+  "version": "1.46",
+  "date": "20161221",
+  "extranetid": "78",
+  "description": "This is the description of my app",
+  "production": "true",
+  "layers": [
+    {
+      "devUrl": "https://dev.dnr.state.mn.us/arcgis/rest/services/ewr/SpringInventory/FeatureServer/0",
+      "prodUrl": "https://dev.dnr.state.mn.us/arcgis/rest/services/ewr/SpringInventory/FeatureServer/0",
+      "name": "CandidateLayer",
+      "type": "FeatureLayer",
+      "searchable": "true",
+      "editable": "true",
+      "outFields": ["objectid","relateid","survey_name"]
+    }
+  ],
+  "projectTools": [
+
+  ],
+  "contacts": [
+    {
+      "type": "developer",
+      "name": "chpoulio"
+    },
+    {
+      "type": "support",
+      "name": "jajohnso"
+    },
+    {
+      "type": "users",
+      "name": "MyAppADGroup"
+    }
+  ]
+}

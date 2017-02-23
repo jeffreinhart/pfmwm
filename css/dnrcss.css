@@ -1,0 +1,551 @@
+@import url(https://fonts.googleapis.com/css?family=Signika:700,600,400);
+
+html, body {
+    height: 100%;
+}
+
+img {
+    vertical-align:middle;
+}
+
+/* TITLE */
+#logo {
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+}
+
+#title h1 {
+    color: #FFF;
+    display: inline-block;
+    font-size: 24px;
+    vertical-align: middle;
+    z-index: 9999;
+}
+
+/* General styles */
+body, textarea{font-family: 'Signika', sans-serif; font-size:14px; color:#000000;}
+body {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+legend, h3 {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+}
+
+legend {
+    border-bottom: none;
+}
+
+.sublabel {
+    display:block;
+    font-weight: 400;
+    font-size: 13px;
+    max-width: 90%;
+}
+a:hover {
+    color: #E4D9D4;
+}
+
+body#map-div {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin-right: 87px;
+}
+
+.modal-header {
+    background-color: #f1f9fc;
+    background-image: url("../assets/img/main_banner.jpg");
+    border-bottom: 1px solid #eeeeee;
+    height: 120px;
+    /*padding: 5px;*/
+}
+
+input[type="text"]{
+    border: medium none;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5) inset;
+    padding: 8px 7px;
+    color: #444;
+    font-size: 15px;
+}
+
+/* Search: Public Land Survey Radio Buttons (West/East) */
+label[for*=radioDir] {
+    padding-left: 0.5em;
+    padding-right: 1em;
+}
+
+.aside-row {
+    margin-bottom: 15px;
+}
+
+.dont-break-out p a {
+    /* These are technically the same, but use both */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+
+    /* standard word break */
+    word-break: break-word;
+
+    /* Adds a hyphen where the word breaks, if supported */
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+/* map div */
+#map {
+    height: calc(100% - 52px);
+    height: -webkit-calc(100% - 52px);
+    height: -moz-calc(100% - 52px);
+    width: calc(100% - 90px);
+    width: -webkit-calc(100% - 90px);
+    width: -moz-calc(100% - 90px);
+    margin: 0px;
+    position: absolute;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Right Navigation */
+nav {
+    background-color: #001A32;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    width: 90px;
+    height: 100%;
+    -moz-box-shadow: -3px 0 3px rgba(0,0,0,0.5);
+    -webkit-box-shadow: -3px 0 3px rgba(0,0,0,0.5);
+    box-shadow: -3px 0 3px rgba(0,0,0,0.5);
+    min-height: 630px;
+    overflow: auto;                                     
+}
+
+nav ul {
+    color: #A3D8E2;
+    font-size: 15px;
+    display: block;
+    padding: 10px 0px 10px 0;
+    text-align: center;
+    display:block;
+}
+
+nav ul li {
+    color: #A3D8E2;
+    font-size: 15px;
+    display: block;
+    padding: 15px 5px 15px 0;
+    text-align: center;
+    display: block;
+}
+
+#main-nav li:hover,
+#main-nav li:active {
+    color: #fff;
+    cursor: pointer;
+    cursor: hand;
+    background-color:#666A6D;
+}
+
+nav ul li.last {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 10px;
+    width: 87px;
+}
+
+nav ul li.secondlast {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 70px;
+    width: 87px;
+}
+
+nav a {
+    font-size: 16px;
+    display: block;
+    padding: 15px 5px 15px 0;
+    text-align: center;
+    overflow: auto;
+}
+
+nav a.last {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 10px;
+    width: 87px;
+}
+
+nav a:hover,
+nav a:hover i,
+nav li.ui-tabs-active a i {
+    color: #FFFFFF !important;
+    cursor: pointer;
+    cursor: hand;
+    color:white;
+}
+
+#main-nav .aside-content {
+    position: absolute;
+    padding-left: 20px;
+    z-index: 1;
+    top: 0;
+    right: 92px;
+    height: 100%;
+    width: 350px;
+    background-color: #b1c0cd;
+    -webkit-box-shadow: -7px 7px 24px -3px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    -7px 7px 24px -3px rgba(50, 50, 50, 0.75);
+    box-shadow:         -7px 7px 24px -3px rgba(50, 50, 50, 0.75);
+}
+
+#main-nav .aside-content .aside-inner {
+    padding-top: 10px;
+    padding-right: 30px;
+    height:100%;
+    position:relative;
+    z-index:100;
+    overflow-y:auto;
+}
+
+.infobuttons button{
+    margin: 10px;
+}
+
+.infobuttons{
+    margin: 10px;
+}
+/* Search Tab */
+
+#search-tab button.btn {
+    height: 33px;
+    vertical-align:middle;
+    position: relative;
+    top: -2px;
+}
+
+.searchInput{
+    width: 220px;
+    height:32px;
+    margin-right: 4px;
+}
+
+.digInput{
+    width: 280px;
+    height:32px;
+}
+
+
+.twp {
+    border: medium none;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5) inset;
+    padding: 8px 7px;
+    width: 68px;
+    margin-right: 4px;
+}
+
+.searchtable{
+    height:200px;
+    width:92%;
+    overflow-y:scroll;
+    display:none;
+    padding-top:5px;
+}
+
+.searchtable table{
+    width:100%;
+    padding-top:5px;
+}
+
+/* table style */
+th {
+    background-color: #000000;
+    color: #E4D9D4;
+    font-family: 'Signika';
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2
+}
+
+#lastedit th{
+    background-color: #E4D9D4;;
+    color: #000000;
+    font-family: 'Signika';
+    font-weight: 600;
+}
+
+/* Hide Aside Button */
+a {
+    color: #666A7D;
+}
+
+a.close-tab {
+    background-color: #E4D9D4;
+    display:block;
+    width:40px;
+    height:35px;
+    text-align:center;
+    position:absolute;
+    z-index:99;
+    top:48%;
+    left:-20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 5px;
+    line-height:40px;
+    text-indent:-5px;
+    font-size:20px;
+}
+a.close-tab:hover {
+    color: #000000;
+}
+
+
+/* Map tools */
+
+.esriSimpleSliderMoveButton {
+    /*border-bottom: 2px solid #666666;  */
+    background-image: url(../assets/img/move_button.jpg);
+    background-size: 100%; /* To fill the dimensions of container*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #001A32;
+    cursor: pointer;
+    cursor: hand;
+}
+
+.esriSimpleSliderMoveModeButton:hover {
+    background-color: rgb(102, 102, 102);
+    background-color: rgba(102, 102, 102, 0.9);
+}
+
+.esriSimpleSliderHomeButton {
+    /*border-bottom: 2px solid #666666;  */
+    background-image: url(../assets/img/mn_button.jpg);
+    background-size: 100%; /* To fill the dimensions of container*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #001A32;
+    cursor: pointer;
+    cursor: hand;
+}
+.esriSimpleSliderHomeButton:hover {
+    background-color: rgb(102, 102, 102);
+    background-color: rgba(102, 102, 102, 0.9);
+}
+
+/* Map zoom slider */
+#map_zoom_slider {
+    position: absolute;
+    z-index: 30;
+    top: 46%;
+    -webkit-box-shadow: 3px 3px 2px 0px rgba(50,50,50,0.55);
+    -moz-box-shadow: 3px 3px 2px 0px rgba(50,50,50,0.55);
+    box-shadow: 3px 3px 2px 0px rgba(50,50,50,0.55);
+}
+
+.esriSimpleSlider {
+    color: #A3D8E2;
+    background-color: #001A32;
+    text-align: center;
+}
+
+.esriSimpleSliderIncrementButton:hover,.esriSimpleSliderDecrementButton:hover {
+    background-color: #666A6D;
+    background: #666A6D;
+}
+
+/* Map zoom disabled colors (related to minZoom/maxZoom options) */
+.esriSimpleSliderDisabledButton,
+.esriSimpleSliderDisabledButton:active,
+.esriSimpleSliderDisabledButton:hover {
+    background-color: #919593;
+    color: #A3D8E2;
+}
+
+#map-switcher {
+    position: absolute;
+    z-index: 30;
+    top: 60px;
+    left: 10px;
+}
+
+#map-switcher a{
+    background-color: #001A32;
+    color: #A3D8E2;
+    display: block;
+    float: left;
+    padding: 0 12px;
+    font-size: 16px;
+    line-height: 34px;
+    -webkit-box-shadow: 3px 3px 2px 0px rgba(50,50,50,0.55);
+    -moz-box-shadow: 3px 3px 2px 0px rgba(50,50,50,0.55);
+    box-shadow: 3px 3px 2px 0px rgba(50,50,50,0.55);
+    cursor: pointer;
+    cursor: hand;   
+}
+
+#map-switcher a.first {
+    -webkit-border-top-left-radius: 6px;
+    -webkit-border-bottom-left-radius: 6px;
+    -moz-border-radius-topleft: 6px;
+    -moz-border-radius-bottomleft: 6px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    padding: 0 12px 0 16px;
+    border-left: none;
+}
+
+#map-switcher a.last {
+    -webkit-border-top-right-radius: 6px;
+    -webkit-border-bottom-right-radius: 6px;
+    -moz-border-radius-topright: 6px;
+    -moz-border-radius-bottomright: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    padding: 0 16px 0 12px;
+    border-right: none;
+}
+
+#map-switcher a i {
+    text-shadow: 1px 1px 1px #333;
+}
+
+#map-switcher a:hover,
+#map-switcher a.active {
+    background-color: #666A6D;
+    background: #666A6D;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.btn {
+    background: #000000;
+    padding: 7px 14px;
+    -webkit-box-shadow: rgba(0,0,0,0) 0 1px 0;
+    -moz-box-shadow: rgba(0,0,0,0) 0 1px 0;
+    box-shadow: rgba(0,0,0,0) 0 1px 0;
+    text-shadow: rgba(0,0,0,.4) 0 1px 0;
+    color: #e4d9d4;
+    font-size: 14px;
+    vertical-align: middle;
+    background: #a3d8e2;
+    color: #00427f;
+    border-width: 3;
+    border-color: #000000;
+    margin-top: 4px;
+}
+
+.btn:hover {
+    background: #666A6D;;
+    color: #e4d9d4;
+}
+
+.loading{position:absolute;top:50%;left:50%;z-index:1111;width:32px;height:32px;}
+
+/* File Upload */
+.dropzone {
+    background: white none repeat scroll 0 0;
+    border: 2px dashed red;
+    border-radius: 5px;
+    height: 100%;
+}
+
+#filedrop{
+    margin: auto;
+    padding-right: 40px;
+    height: 20px
+}
+
+.uploadradios{
+    margin-bottom: 10px;
+}
+
+.ditchinput{
+    width:275px;
+}
+
+.uploadlabel{
+    font-size: 14px;
+}
+
+.uploadbtn{
+    margin-bottom:30px;
+}
+.uploadtext{
+    margin-top:130px;
+}
+#filter-tab button.btn {
+    height: 33px;
+    position: relative;
+    top: -2px;
+    vertical-align: middle;
+}
+.springEnter{
+    width: 260px;
+    height:32px;
+    float: right;
+    margin-bottom: 8px;
+    margin-right: 28px;
+    vertical-align: middle;
+}
+.springEnterDate{
+    width: 132px;
+    height:32px;
+    margin-left: 6px;
+    text-align-last:center;
+    vertical-align: middle;
+}
+.springEnterComment{
+    width: 260px;
+    height:96px;
+    margin-bottom: 8px;
+    margin-right: 8px;
+    float: left;
+}
+#addSpring-tab button.btn {
+    height: 33px;
+    margin-left: 100px;
+}
+
+#header {
+    padding-top:0px;
+    padding-left:0px;
+    background-color: #001A32;
+    font-size:18pt;
+    display: flex;
+    text-align: left;
+    align-items: center; /* align vertical */
+    font-weight:700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    height:52px;
+    z-index: -1;
+}
+
+.shadow {
+    box-shadow:4px 4px 8px #adadad;
+    -webkit-box-shadow:4px 4px 8px #adadad;
+    -moz-box-shadow:4px 4px 8px #adadad;
+    -o-box-shadow:4px 4px 8px #adadad;
+}

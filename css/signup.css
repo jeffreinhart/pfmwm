@@ -209,7 +209,7 @@ label {
   width: 48px;
   height: 48px;
   padding: 0 0 48px;
-  position: absolute:
+  position: absolute;
   top: 75%;
   left:50%;
   /* Fix wrong positioning in Firefox 9 & older (bug 450418) */

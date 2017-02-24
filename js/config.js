@@ -1,29 +1,30 @@
 var CONFIG = {
-  "title": "Sample App",
-  "version": "1.46",
-  "date": "20161221",
-  "extranetid": "78",
-  "description": "This is the description of my app",
-  "production": "true",
+  "title": "Private Forest Management Web Module",
+  "version": "1.00",
+  "date": "20170220",
+  "extranetid": "",
+  "description": "Private Forest Management forest stewardship plans and forest management projects.",
+  "production": "false",
   "layers": [
     {
-      "devUrl": "https://arcgis.dev.dnr.state.mn.us/arcgis/rest/services/wld/AnimalDamage_Dyn_Service/MapServer",
-      "prodUrl": "https://arcgis.dev.dnr.state.mn.us/arcgis/rest/services/wld/AnimalDamage_Dyn_Service/MapServer",
-      "name": "AnimalDamage",
-      "type": "ArcGISDynamicMapServiceLayer",
+      "devUrl": "http://2k12carcasstest:6080/arcgis/rest/services/for/pfmwm_woodlandmgmtplanning/FeatureServer/2",
+      "prodUrl": "",
+      "name": "management_plans",
+      "type": "FeatureLayer",
       "searchable": "true",
       "editable": "true",
+      "outFields": ["*"],
+      "opacity": 0.5
+    },
+    {
+      "devUrl": "http://2k12carcasstest:6080/arcgis/rest/services/for/pfmwm_countypls/MapServer",
+      "prodUrl": "",
+      "name": "pfmwm_countypls",
+      "type": "ArcGISTiledMapServiceLayer",
+      "searchable": "false",
+      "editable": "false",
       "outFields": ["*"]
-     } //,
-//     {
-//       "devUrl": "https://dev.dnr.state.mn.us/arcgis/rest/services/ewr/SpringInventory/FeatureServer/0",
-//       "prodUrl": "https://dev.dnr.state.mn.us/arcgis/rest/services/ewr/SpringInventory/FeatureServer/0",
-//       "name": "CandidateLayer",
-//       "type": "FeatureLayer",
-//       "searchable": "true",
-//       "editable": "true",
-//       "outFields": ["objectid","relateid","survey_name"]
-//     }
+    }
   ],
   "projectTools": [
     {
@@ -31,38 +32,38 @@ var CONFIG = {
       //"file": "https://arcgis.dnr.state.mn.us/gis/template/js/t_about.js", //Dev file
       "file": "js/t_about.js", //Local file
       "type": "button",
-      "load": "true"
+      "load": ["all-forest-stewardship"]
     },
     {
       "name": "legend",
       //"file": "https://arcgis.dnr.state.mn.us/gis/template/js/t_legend.js", //Dev file
       "file": "js/t_legend.js", //Local file
       "type": "button",
-      "load": "true"
+      "load": ["all-forest-stewardship"]
     },
     {
       "name": "search",
       //"file": "https://arcgis.dnr.state.mn.us/gis/template/js/t_search.js", //Dev file
       "file": "js/t_search.js", //Local file
       "type": "button",
-      "load": "true"
+      "load": ["all-forest-stewardship"]
     },
     {
       "name": "splashscreen",
       //"file": "https://arcgis.dnr.state.mn.us/gis/template/js/t_splashscreen.js", //Dev file
       "file": "js/t_splashscreen.js", //Local file
       "type": "splashscreen",
-      "load": "true"
+      "load": ["main_page"]
     }
   ],
   "contacts": [
     {
       "type": "developer",
-      "name": "yourUsernameHere" //Your username (e.g. chpoulio)
+      "name": "jereinha"
     },
     {
       "type": "support",
-      "name": "supportUsernameHere" //Support username (e.g. jajohnso)
+      "name": "jereinha"
     },
     {
       "type": "users",

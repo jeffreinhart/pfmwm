@@ -4,6 +4,7 @@ var email = getCookie("email")
 var fullname = getCookie("fullname");
 
 //CUSTOM GLOBAL VARIABLES
+var fullPageZoom = [[-94, 46.300],6]
 
 //BROWSER CHECK >>>>>>
 $().toastmessage({
@@ -28,15 +29,11 @@ msieversion();
 //BROWSER CHECK <<<<<<
 
 require([
-    "esri/map","esri/layers/FeatureLayer",
     "esri/tasks/GeometryService",
-    "esri/graphic", "esri/symbols/SimpleFillSymbol",
     "dojo/parser", "dojo/json", "dojo/dom",
-    "dijit/layout/BorderContainer", "dijit/layout/ContentPane",
-    "dojo/domReady!","esri/virtualearth/VEGeocoder"
 ], function(
-    Map, FeatureLayer, GeometryService,
-    Graphic, SimpleFillSymbol, parser, json, dom
+    GeometryService,
+    parser, json, dom
 ) {
 
     esriConfig.defaults.io.proxyUrl = "/proxy/";

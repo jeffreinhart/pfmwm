@@ -461,7 +461,7 @@ a.close-tab:hover {
     color: #e4d9d4;
 }
 
-.loading{position:absolute;top:50%;left:50%;z-index:1111;width:32px;height:32px;}
+.loading{position:absolute;top:50%;left:45%;z-index:1111;width:32px;height:32px;}
 
 /* File Upload */
 .dropzone {

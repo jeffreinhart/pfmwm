@@ -2,7 +2,7 @@
 var map;
 
 //CUSTOM GLOBAL VARIABLES
-
+var lastFl; // last feature layer to load, hide spinner on update-end
 
 require([
     "esri/map","esri/layers/FeatureLayer",
@@ -40,9 +40,9 @@ require([
     });
 
     map = new Map("map", {
-        basemap: "streets",
-        center: [-95.249, 46.300],
-        zoom: 6,
+        basemap: "satellite",
+        center: fullPageZoom[0],
+        zoom: fullPageZoom[1],
         slider: true,
         logo: false
     });
@@ -73,9 +73,17 @@ require([
         setEventListeners();
 
         //Finished Loading so hide the spinny dealie
-        esri.hide(dojo.byId("loading"));
-    });
-});
+        if(lastFl == null){
+            // no layers to wait for, so just hide it
+            esri.hide(dojo.byId("loading"));
+        } else {
+            // layer to wait for, so let that finish updating first
+            lastFl.on("update-end", function(e) {
+                esri.hide(dojo.byId("loading"));
+            });
+        };// end if else hide spinner
+    });// end map.on("load"...
+}); // end require
 
 //ADD HOME BUTTON (ZOOM TO STATE)
 function addHomeSlider() {
@@ -84,13 +92,16 @@ function addHomeSlider() {
         className: "esriSimpleSliderHomeButton",
         title: 'Zoom to Full Extent',
         onclick: function() {
-            map.centerAndZoom([-95.249, 46.300],7);
+            map.centerAndZoom(fullPageZoom[0],fullPageZoom[1]);
         }
     }, dojo.query(".esriSimpleSliderIncrementButton")[0], "after");
 }
 
 function Config_Load() {
-    var pageName = "all-forest-stewardship"
+    // pageName defines which tools load in which page
+    var pageName = "all-forest-stewardship";
+    // lastFlName defines which featureLayer will trigger hiding the spinner
+    var lastFlName = "management_plans";
     //ITERATE THROUGH LAYERS AND LOAD THOSE THAT APPLY
     $.each(CONFIG.layers, function(index, value) {
         try {
@@ -107,7 +118,13 @@ function Config_Load() {
                         id: value.name,
                         opacity: value.opacity
                     });
-                    map.addLayer(fl);
+                    if(value.name == lastFlName){
+                        // Assing layer to global, will be last to load, so on
+                        // update-end, stop spinner
+                        lastFl = map.addLayer(fl);
+                    } else {
+                        map.addLayer(fl);
+                    }
                     break;
                 case "ArcGISTiledMapServiceLayer":
                     var fl = new esri.layers.ArcGISTiledMapServiceLayer(aURL);

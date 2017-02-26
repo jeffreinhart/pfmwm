@@ -4,7 +4,7 @@ $(document).ready(function() {
 });
 
 function Config_Load() {
-    var pageName = "main_page"
+    var pageName = "main"
     //SET TITLE OF PAGE IN TAB AND IN BANNER
     document.title = CONFIG.title;
     $("#appTitle").text(CONFIG.title);

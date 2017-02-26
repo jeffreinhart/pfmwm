@@ -29,11 +29,9 @@ msieversion();
 //BROWSER CHECK <<<<<<
 
 require([
-    "esri/tasks/GeometryService",
-    "dojo/parser", "dojo/json", "dojo/dom",
+    "esri/tasks/GeometryService"
 ], function(
-    GeometryService,
-    parser, json, dom
+    GeometryService
 ) {
 
     esriConfig.defaults.io.proxyUrl = "/proxy/";
@@ -140,4 +138,15 @@ function delete_cookies() {
     fullname = "";
     console.log('asd email=' + email + '  role=' + role);
     window.location.replace("index.html");
+}
+
+function jsonToForm(jsonIn, divId){
+    $(function() {
+        // Generate a form
+        $("#"+divId).dform(jsonIn);
+    });
+} // end jsonToForm
+
+function disableForm(formID){
+    $('#'+formID).children(':input').attr('disabled', 'disabled');
 }

@@ -53,7 +53,7 @@ var CONFIG = {
       //"file": "https://arcgis.dnr.state.mn.us/gis/template/js/t_splashscreen.js", //Dev file
       "file": "js/t_splashscreen.js", //Local file
       "type": "splashscreen",
-      "load": ["main_page"]
+      "load": ["main"]
     }
   ],
   "contacts": [

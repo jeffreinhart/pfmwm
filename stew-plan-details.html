@@ -24,32 +24,18 @@
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon"/>
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon"/>
 </head>
-
-    <body id="map-root" class="claro">
-        <div id="header" class="shadow">
-            <div id="title">
-                <img id=logo src="assets/img/Capture.JPG" alt="MNDNR logo">
-                <h1 id="appTitle"></h1>
-            </div>
+<body id="map-root" class="claro">
+    <div id="header" class="shadow">
+        <div id="title">
+            <img id=logo src="assets/img/Capture.JPG" alt="MNDNR logo">
+            <h1 id="appTitle"></h1>
         </div>
-    <div id="map"></div>
-    <img id="loading" src="assets/img/loading.gif" class="loading" alt="loading spinner">
-    <div id="map-switcher">
-        <a class="first active" id="satellite">Aerial</a>
-        <a class="middle" id="streets">Streets</a>
-        <a class="last" id="gray">Light Grey</a>
-    </div>
-    <div id="main-nav">
-        <nav>
-            <ul id="buttonList">
-                <li id="aboutButton" class="panelbutton" tabname="about-tab"><i class="glyphicon glyphicon-map-marker"></i></br>About This Application</li>
-                <li id="legendButton" class="panelbutton" tabname="legend-tab"><i class="glyphicon glyphicon-menu-hamburger"></i></br>Legend</li>
-                <li id="searchButton" class="panelbutton" tabname="search-tab"><i class="glyphicon glyphicon-zoom-in"></i></br>Search</li>
-                <li id="logout" class="last"><i class="glyphicon glyphicon-log-out"></i></br>Logout</li>
-            </ul>
-        </nav>
     </div>
 
+    <div id="management_plan_form_div" class="col-sm-4"></div>
+    
+    <img id="loading" src="assets/img/loading.gif" class="loading" alt="loading spinner">
+    
     <!--Import the Javascript here so it loads faster-->
     <script type="text/javascript" src="js/libs/jquery-1-11-3.min.js"></script>
     <script type="text/javascript" src="js/libs/jquery-ui-1.10.2.min.js"></script>
@@ -61,10 +47,11 @@
     <script type="text/javascript" src="js/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/libs/esri3.16.js"></script>
     <script type="text/javascript" src="js/libs/toast/javascript/jquery.toastmessage.js"></script>
+    <script type="text/javascript" src="js/libs/jquery.dform-1.1.0.min.js"></script>
     <!-- CUSTOM JS DOWN HERE -->
     <script type="text/javascript" src="js/config.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/allForestStewardship.js"></script>
+    <script type="text/javascript" src="js/stewPlanDetails.js"></script>
     <script type="text/javascript" src="js/divevents.js"></script>
 </body>
 </html>

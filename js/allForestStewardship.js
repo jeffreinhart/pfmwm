@@ -102,6 +102,11 @@ function Config_Load() {
     var pageName = "all-forest-stewardship";
     // lastFlName defines which featureLayer will trigger hiding the spinner
     var lastFlName = "management_plans";
+    
+    //SET TITLE OF PAGE IN TAB AND IN BANNER
+    document.title = CONFIG.title;
+    $("#appTitle").text(CONFIG.title);
+    
     //ITERATE THROUGH LAYERS AND LOAD THOSE THAT APPLY
     $.each(CONFIG.layers, function(index, value) {
         try {

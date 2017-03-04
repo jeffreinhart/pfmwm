@@ -28,7 +28,7 @@ body, textarea{font-family: 'Signika', sans-serif; font-size:14px; color:#000000
 body {
     position: relative;
     z-index: 1;
-    overflow: hidden;
+    overflow: visible;
 }
 
 h2 {
@@ -72,6 +72,7 @@ body#map-div {
     /*padding: 5px;*/
 }
 
+/*FORM STUFF*/
 form {
     margin-top: 8px;
     padding:8px;

@@ -13,61 +13,47 @@ require([
     var divId = "management_plan_form_div";
     var formId = divId.slice(0,-4);
     
-    var jsonIn = {
-        "action": "stewPlanDetails.html",
-        "method": "post",
-        "id": formId,
-        "html": [
-            {
-                "type": "hidden",
-                "name": "party_contacts.globalid.landcontact",
-                "value": "12345"
-            },
-            {
-                "type": "hidden",
-                "name": "party_contacts.globalid.planwriter",
-                "value": "56546"
-            },
-            {
-                "type": "hidden",
-                "name": "managment_plans.globalid",
-                "value": "45578"
-            },
-            {
-                "caption": "Land Contact First Name",
-                "type": "text",
-                "name": "party_contacts.person_first_name.landcontact",
-                "value": "Jeff"
-            },
-            {
-                "caption": "Land Contact Last Name",
-                "type": "text",
-                "name": "party_contacts.person_last_name.landcontact",
-                "value": "Reinhart"
-            },
-            {
-                "caption": "Plan Date",
-                "type": "text",
-                "name": "management_plans.plan_date",
-                "datepicker": {
-                    "minDate": new Date(1900,1,1)
-                },
-                'value': "02/27/2017"
-            },
-            {
-                "caption": "Plan Acres",
-                "type": "number",
-                "name": "management_plans.acres_plan",
-                'value': 40
-            },
-        ]
-    }; // end jsonIn
+    // GET RESULTS
+    var gpUrl = "http://2k12carcasstest:6080/arcgis/rest/services/for/pfmwmGp/GPServer/getMgmtPlanAttributesJson";
+    var gp = new Geoprocessor(gpUrl);
+
+    function executeGP(mpGid){
+        var params = {"management_plan_globalid": mpGid};
+        gp.submitJob(params, completeCallback, statusCallback);
+    }
+
+    function statusCallback(jobInfo){
+        console.log(jobInfo.jobStatus);
+    }
     
-    jsonToForm(jsonIn, divId);
+    function completeCallback(jobInfo) {
+        gp.getResultData(
+            jobInfo.jobId,
+            "management_plan_attributes_json",
+            function(result){
+                var jsonIn = result.value
+                var jsonOut = {
+                    "action": "stewPlanDetails.html",
+                    "method": "post",
+                    "id": formId,
+                    "html": jsonIn.html
+                };
+
+                jsonToForm(jsonOut, divId);
                 
-    disableForm(formId);
+                disableForm(formId);
     
-    esri.hide(dojo.byId("loading"));
+                esri.hide(dojo.byId("loading"));                
+            } // end function for handling gp.getResultData result
+        ) // end gp.getResultData
+    }; // end completeCallback
+    
+    function resultToForm(jsonIn){
+        
+    }
+    
+    executeGP("{409672A7-5ED1-4CB6-928A-DEAD4C89368B}");
+    
 });//end require
 
 

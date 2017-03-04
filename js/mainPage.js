@@ -1,10 +1,46 @@
-$(document).ready(function() {
-//    $('#Dialog').modal('show');
+require([
+    "esri/dijit/Search", "esri/layers/FeatureLayer",
+    "dojo/dom",
+    "dojo/domReady!"
+], function(
+    Search, FeatureLayer,
+    dom
+){
     Config_Load();
-});
+    
+    var search = new Search({
+        sources: []
+    }, "search");
+
+    search.on("load", function(){
+        var sources = search.sources;
+        sources.push({
+            featureLayer: new FeatureLayer(CONFIG.layers[0].devUrl),
+            searchFields: ["reg_num"],
+            suggestionTemplate: "${reg_num}",
+            exactMatch: true,
+            outFields: ["globalid", "reg_num"],
+            enableSuggestions: true
+        });
+        
+        search.set("sources", sources);
+    }); // end search on load
+    
+    search.startup();
+
+    search.on("select-result", function(e){
+        dom.byId("search_input").value = e.result.feature.attributes.reg_num;
+    }); // end search on results
+
+    search.on("search-results", function(e){
+        console.log("search-result", e);
+    }); // end search on results
+    
+}); // end require
+
 
 function Config_Load() {
-    var pageName = "main"
+    var pageName = "main1"
     //SET TITLE OF PAGE IN TAB AND IN BANNER
     document.title = CONFIG.title;
     $("#appTitle").text(CONFIG.title);

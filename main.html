@@ -33,15 +33,12 @@
     </div>
     <div>
         <a href='all-forest-stewardship.html'>All Forest Stewardship Map</a><br>
-        <a href='stew-plan-details.html'>Stewardship Plan Details</a>
     </div>
 
-    <div id="search"></div>
-    <div id="info">
-        <div>Search a registration number.</div>
-    </div>
-
-
+    <label for="regNumSearch">Enter a registration number: </label>
+    <input id="regNumSearch">
+    <button onclick="goStewPlanDetails()" class="btn">Go</button>
+    <p hidden id="selected-globalid"></p>
     
     <!--Import the Javascript here so it loads faster-->
     <script type="text/javascript" src="js/libs/jquery-1-11-3.min.js"></script>

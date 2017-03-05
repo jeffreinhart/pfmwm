@@ -43,8 +43,8 @@ $('#submit-login').click(function() {
             "username": $('#user').val(),
             "password": $('#password').val(),
             "type": 'signin',
-            "appid": '78',  //GLOBAL VARIABLE  -- EXTRANETID
-            "prod": 'true'  //GLOBAL VARIABLE  -- PRODUCTION
+            "appid": '85',  //GLOBAL VARIABLE  -- EXTRANETID
+            "prod": 'false'  //GLOBAL VARIABLE  -- PRODUCTION
         },
         dataType: 'json',
         error: function(err) {
@@ -106,8 +106,8 @@ function create_user() {
             username: $("#firstemail").val(),
             password: $("#password1").val(),
             type: "signup",
-            appid: '78',  //GLOBAL VARIABLE  -- EXTRANETID
-            prod: 'true',  //GLOBAL VARIABLE  -- PRODUCTION
+            appid: '85',  //GLOBAL VARIABLE  -- EXTRANETID
+            prod: 'false',  //GLOBAL VARIABLE  -- PRODUCTION
             from_email: 'christopher.pouliot@state.mn.us',  //GLOBAL VARIABLE  -- FROM CONFIG
             to_email: 'christopher.pouliot@state.mn.us'  //GLOBAL VARIABLE  -- FROM CONFIG
         };

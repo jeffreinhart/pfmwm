@@ -8,36 +8,36 @@ require([
 ){
     Config_Load();
     
-    var search = new Search({
-        sources: []
-    }, "search");
-
-    search.on("load", function(){
-        var sources = search.sources;
-        sources.push({
-            featureLayer: new FeatureLayer(CONFIG.layers[0].devUrl),
-            searchFields: ["reg_num"],
-            suggestionTemplate: "${reg_num}",
-            exactMatch: true,
-            outFields: ["globalid", "reg_num"],
-            enableSuggestions: true
+    var query = "http://2k12carcasstest:6080/arcgis/rest/services/for/pfmwm_woodlandmgmtplanning/FeatureServer/2/query?where=not+reg_num+%3D+%27%27&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=reg_num%2C+globalid&returnGeometry=false&maxAllowableOffset=&geometryPrecision=&outSR=&gdbVersion=&returnDistinctValues=false&returnIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&multipatchOption=&resultOffset=&resultRecordCount=&f=json"
+    var regNumArr = [];
+    
+    $.ajax({
+        url: query
+    }).done(function(data) {
+        var jsonReturn = JSON.parse(data);
+        $.each(jsonReturn.features, function(i, item){
+           regNumArr.push({
+                "label": item.attributes.reg_num,
+                "value": item.attributes.globalid
+            });
         });
         
-        search.set("sources", sources);
-    }); // end search on load
-    
-    search.startup();
-
-    search.on("select-result", function(e){
-        dom.byId("search_input").value = e.result.feature.attributes.reg_num;
-    }); // end search on results
-
-    search.on("search-results", function(e){
-        console.log("search-result", e);
-    }); // end search on results
+        $("#regNumSearch").autocomplete({
+            source: regNumArr,
+            select: function(event, ui){
+                event.preventDefault();
+                $("#regNumSearch").val(ui.item.label)
+                $("#selected-globalid").html(ui.item.value)
+            }
+        });
+    });
     
 }); // end require
 
+function goStewPlanDetails(){
+    document.cookie = "mpGid="+$("#selected-globalid").html();
+    window.location.href = "stew-plan-details.html";
+}; // end goStewPlanDetails
 
 function Config_Load() {
     var pageName = "main1"

@@ -2,7 +2,7 @@ var CONFIG = {
   "title": "Private Forest Management Web Module",
   "version": "1.00",
   "date": "20170220",
-  "extranetid": "",
+  "extranetid": "85",
   "description": "Private Forest Management forest stewardship plans and forest management projects.",
   "production": "false",
   "layers": [

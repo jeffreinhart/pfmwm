@@ -1,3 +1,5 @@
+var mpGid  = getCookie("mpGid");
+
 require([
     "esri/tasks/Geoprocessor",
     "dojo/parser", "dojo/json", "dojo/dom",
@@ -52,7 +54,7 @@ require([
         
     }
     
-    executeGP("{409672A7-5ED1-4CB6-928A-DEAD4C89368B}");
+    executeGP(mpGid);
     
 });//end require
 

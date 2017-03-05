@@ -50,10 +50,6 @@ require([
         ) // end gp.getResultData
     }; // end completeCallback
     
-    function resultToForm(jsonIn){
-        
-    }
-    
     executeGP(mpGid);
     
 });//end require
@@ -84,4 +80,3 @@ function Config_Load() {
     //ITERATE THROUGH FEATURE LAYERS AND LOAD THOSE THAT APPLY
         //SEARCHABLE?  EDITING T/F?
 }
-

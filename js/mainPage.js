@@ -1,21 +1,22 @@
+var regNumArr = [];
+
 require([
-    "esri/dijit/Search", "esri/layers/FeatureLayer",
     "dojo/dom",
     "dojo/domReady!"
 ], function(
-    Search, FeatureLayer,
     dom
 ){
     Config_Load();
     
-    var query = "http://2k12carcasstest:6080/arcgis/rest/services/for/pfmwm_woodlandmgmtplanning/FeatureServer/2/query?where=not+reg_num+%3D+%27%27&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=reg_num%2C+globalid&returnGeometry=false&maxAllowableOffset=&geometryPrecision=&outSR=&gdbVersion=&returnDistinctValues=false&returnIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&multipatchOption=&resultOffset=&resultRecordCount=&f=json"
-    var regNumArr = [];
-    
+    document.cookie = "mpGid=";
+
+    var query = "http://2k12carcasstest:6080/arcgis/rest/services/for/pfmwm_woodlandmgmtplanning/FeatureServer/2/query?where=not+reg_num+%3D+%27%27&outFields=reg_num%2C+globalid&returnGeometry=false&orderByFields=reg_num&f=json"
+        
     $.ajax({
         url: query
     }).done(function(data) {
-        var jsonReturn = JSON.parse(data);
-        $.each(jsonReturn.features, function(i, item){
+        var jsonFeatures = JSON.parse(data).features;
+        $.each(jsonFeatures, function(i, item){
            regNumArr.push({
                 "label": item.attributes.reg_num,
                 "value": item.attributes.globalid
@@ -24,10 +25,15 @@ require([
         
         $("#regNumSearch").autocomplete({
             source: regNumArr,
+            minLength: 2,
+            autoFocus: true,
+            create: function() {
+                $("#loading").hide();
+            },
             select: function(event, ui){
                 event.preventDefault();
-                $("#regNumSearch").val(ui.item.label)
-                $("#selected-globalid").html(ui.item.value)
+                $("#regNumSearch").val(ui.item.label);
+                document.cookie = "mpGid="+ui.item.value;
             }
         });
     });
@@ -35,8 +41,30 @@ require([
 }); // end require
 
 function goStewPlanDetails(){
-    document.cookie = "mpGid="+$("#selected-globalid").html();
-    window.location.href = "stew-plan-details.html";
+    var mpGid = getCookie("mpGid");
+    if(mpGid == ''){
+        // didn't pick from autocomplete, check if in array
+        var regNum = $("#regNumSearch").val();
+        $.each(regNumArr, function(i, item){
+            if(item.label == regNum){
+                mpGid = item.value;
+                return false;
+            }
+        });
+        if(mpGid == ''){
+            $().toastmessage('showToast', {
+                type: "warning",
+                text: "Registration Number "+regNum+" not found. Please search again.",
+                stayTime: 3000,
+                sticky: false
+            }); 
+        } else {
+            document.cookie = "mpGid="+mpGid;
+            window.location.href = "stew-plan-details.html";
+        }
+    } else {
+        window.location.href = "stew-plan-details.html";
+    }
 }; // end goStewPlanDetails
 
 function Config_Load() {
@@ -64,6 +92,3 @@ function Config_Load() {
     //ITERATE THROUGH FEATURE LAYERS AND LOAD THOSE THAT APPLY
         //SEARCHABLE?  EDITING T/F?
 }
-
-
-

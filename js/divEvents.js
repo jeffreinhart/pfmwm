@@ -2,6 +2,7 @@ function setEventListeners(){
     //THIS ONE MAY GO TO CUSTOM EVENT LISTENERS ....
     $('#logout').click(function() {
        delete_cookies();
+       window.location = 'index.html';
     });
 }
 

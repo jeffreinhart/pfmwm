@@ -16,7 +16,7 @@ require([
     var formId = divId.slice(0,-4);
     
     // GET RESULTS
-    var gpUrl = "http://2k12carcasstest:6080/arcgis/rest/services/for/pfmwmGp/GPServer/getMgmtPlanAttributesJson";
+    var gpUrl = "https://dev.dnr.state.mn.us/arcgis/rest/services/for/pfmwmGp/GPServer/getMgmtPlanAttributesJson";
     var gp = new Geoprocessor(gpUrl);
 
     function executeGP(mpGid){

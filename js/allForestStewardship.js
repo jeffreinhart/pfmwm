@@ -15,30 +15,6 @@ require([
     Map, FeatureLayer, GeometryService,
     Graphic, SimpleFillSymbol, parser, json, dom
 ) {
-
-    esriConfig.defaults.io.proxyUrl = "/proxy/";
-
-    //2K12CARCASSTEST
-    esri.addProxyRule({
-        urlPrefix: "https://dev.dnr.state.mn.us/arcgis/rest/services/",
-        proxyUrl: "proxy.ashx"
-    });
-    //2K12VOLE
-    esri.addProxyRule({
-        urlPrefix: "https://arcgis.dnr.state.mn.us/arcgis/rest/services/",
-        proxyUrl: "proxy.ashx"
-    });
-    //2K12SALMON
-    esri.addProxyRule({
-        urlPrefix: "https://arcgis.dnr.state.mn.us/mndnr/rest/services/",
-        proxyUrl: "proxy.ashx"
-    });
-    //2K12SKINK
-    esri.addProxyRule({
-        urlPrefix: "https://arcgis.dnr.state.mn.us/public/rest/services/",
-        proxyUrl: "proxy.ashx"
-    });
-
     map = new Map("map", {
         basemap: "satellite",
         center: fullPageZoom[0],

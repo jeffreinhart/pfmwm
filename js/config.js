@@ -7,7 +7,7 @@ var CONFIG = {
   "production": "false",
   "layers": [
     {
-      "devUrl": "http://2k12carcasstest:6080/arcgis/rest/services/for/pfmwm_woodlandmgmtplanning/FeatureServer/2",
+      "devUrl": "https://dev.dnr.state.mn.us/arcgis/rest/services/for/pfmwm_woodlandmgmtplanning/FeatureServer/2",
       "prodUrl": "",
       "name": "management_plans",
       "type": "FeatureLayer",
@@ -17,7 +17,7 @@ var CONFIG = {
       "opacity": 0.5
     },
     {
-      "devUrl": "http://2k12carcasstest:6080/arcgis/rest/services/for/pfmwm_countypls/MapServer",
+      "devUrl": "https://dev.dnr.state.mn.us/arcgis/rest/services/for/pfmwm_countypls/MapServer",
       "prodUrl": "",
       "name": "pfmwm_countypls",
       "type": "ArcGISTiledMapServiceLayer",

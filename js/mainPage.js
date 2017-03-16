@@ -5,17 +5,18 @@ require([
     "dojo/domReady!"
 ], function(
     dom
-){
+){   
     Config_Load();
     
+    setEventListeners();
+    
     document.cookie = "mpGid=";
-
-    var query = "http://2k12carcasstest:6080/arcgis/rest/services/for/pfmwm_woodlandmgmtplanning/FeatureServer/2/query?where=not+reg_num+%3D+%27%27&outFields=reg_num%2C+globalid&returnGeometry=false&orderByFields=reg_num&f=json"
-        
+       
     $.ajax({
-        url: query
+        url: "https://dev.dnr.state.mn.us/arcgis/rest/services/for/pfmwm_woodlandmgmtplanning/FeatureServer/2/query?where=not+reg_num+%3D+%27%27&outFields=reg_num%2C+globalid&returnGeometry=false&orderByFields=reg_num&f=json",
+        dataType: "jsonp"
     }).done(function(data) {
-        var jsonFeatures = JSON.parse(data).features;
+        var jsonFeatures = data.features;
         $.each(jsonFeatures, function(i, item){
            regNumArr.push({
                 "label": item.attributes.reg_num,

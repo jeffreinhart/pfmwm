@@ -1,3 +1,14 @@
+var version = "dev"
+// var version = "prod"
+
+var extUrl = "https://dev.dnr.state.mn.us/mndnr/rest/services/";
+var pubUrl = "http://arcgis.dev.dnr.state.mn.us/arcgis/rest/services/";
+
+if (version == "prod") {
+    var extUrl = "to be added";
+    var pubUrl = "to be added";
+}
+
 var CONFIG = {
   "title": "Private Forest Management Web Module",
   "version": "1.00",
@@ -5,27 +16,22 @@ var CONFIG = {
   "extranetid": "85",
   "description": "Private Forest Management forest stewardship plans and forest management projects.",
   "production": "false",
-  "layers": [
-    {
-      "devUrl": "https://dev.dnr.state.mn.us/mndnr/rest/services/for/pfmwm_woodlandmgmtplanning/FeatureServer/1",
-      "prodUrl": "",
-      "name": "management_plans",
-      "type": "FeatureLayer",
-      "searchable": "true",
-      "editable": "true",
-      "outFields": ["*"],
-      "opacity": 0.5
-    },
-    {
-      "devUrl": "http://arcgis.dev.dnr.state.mn.us/arcgis/rest/services/for/pfmwm_countypls/MapServer",
-      "prodUrl": "",
-      "name": "pfmwm_countypls",
-      "type": "ArcGISTiledMapServiceLayer",
-      "searchable": "false",
-      "editable": "false",
-      "outFields": ["*"]
-    }
-  ],
+  "layers": {
+    "management_plans" : {
+        "url": extUrl+"for/pfmwm_woodlandmgmtplanning/FeatureServer/1",
+        "name": "management_plans",
+        "type": "FeatureLayer",
+        "searchable": "true",
+        "editable": "true",
+        "outFields": ["*"],
+        "opacity": 0.5
+        },
+    "pfmwm_countypls": {
+        "url": pubUrl+"for/pfmwm_countypls/MapServer",
+        "name": "pfmwm_countypls",
+        "type": "ArcGISTiledMapServiceLayer",
+        }
+},
   "projectTools": [
     {
       "name": "about",

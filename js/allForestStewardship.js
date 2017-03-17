@@ -76,61 +76,26 @@ function addHomeSlider() {
 function Config_Load() {
     // pageName defines which tools load in which page
     var pageName = "all-forest-stewardship";
-    // lastFlName defines which featureLayer will trigger hiding the spinner
-    var lastFlName = "management_plans";
     
     //SET TITLE OF PAGE IN TAB AND IN BANNER
     document.title = CONFIG.title;
     $("#appTitle").text(CONFIG.title);
+       
+    // add county_pls tiled map service
+    ctyplsConfig = CONFIG.layers.pfmwm_countypls;
+    var ctyplsFl = new esri.layers.ArcGISTiledMapServiceLayer(ctyplsConfig.url);
+    map.addLayer(ctyplsFl);
     
-    //ITERATE THROUGH LAYERS AND LOAD THOSE THAT APPLY
-    $.each(CONFIG.layers, function(index, value) {
-        try {
-            //GET PROPER URL
-            var aURL = value.devUrl;
-            if (CONFIG.production == "true") { aURL = value.prodUrl; }
-
-            switch(value.type) {
-                case "FeatureLayer":
-                    //CREATE FEATURE LAYER AND ADD IT TO THE MAP
-                    var fl = new esri.layers.FeatureLayer(aURL, {
-                        mode: esri.layers.FeatureLayer.MODE_SNAPSHOT,
-                        outFields : value.outFields,
-                        id: value.name,
-                        opacity: value.opacity
-                    });
-                    if(value.name == lastFlName){
-                        // Assing layer to global, will be last to load, so on
-                        // update-end, stop spinner
-                        lastFl = map.addLayer(fl);
-                    } else {
-                        map.addLayer(fl);
-                    }
-                    break;
-                case "ArcGISTiledMapServiceLayer":
-                    var fl = new esri.layers.ArcGISTiledMapServiceLayer(aURL);
-                    //"http://arcgis.dnr.state.mn.us/arcgis/rest/services/mndnr_2010_fsa_photos/MapServer"
-                    //{id: "aerial"});
-                    map.addLayer(fl);
-                    break;
-                case "ArcGISDynamicMapServiceLayer":
-                    var fl = new esri.layers.ArcGISDynamicMapServiceLayer(aURL, {
-                        id: value.name,
-                        outFields: value.outFields
-                    });
-                    //"http://arcgis.dev.dnr.state.mn.us/arcgis/rest/services/wld/AnimalDamage_Dyn_Service/MapServer",
-                    map.addLayer(fl);
-                    break;
-
-                default:
-            }
-        }
-        catch(err) {
-            console.log(err.message);
-        }
+    // add management plans layer
+    mpConfig = CONFIG.layers.management_plans;
+    var mpFl = new esri.layers.FeatureLayer(mpConfig.url, {
+        mode: esri.layers.FeatureLayer.MODE_SNAPSHOT,
+        outFields : mpConfig.outFields,
+        id: mpConfig.name,
+        opacity: mpConfig.opacity
     });
-
-
+    lastFl = map.addLayer(mpFl);
+ 
     //ITERATE THROUGH TOOLS AND LOAD THOSE THAT APPLY
     $.each(CONFIG.projectTools, function(index, value) {
         try {
@@ -142,11 +107,4 @@ function Config_Load() {
             console.log(err.message);
         }
     });
-
-    //ITERATE THROUGH WORKING LAYERS AND LOAD THOSE THAT APPLY
-
-    //ITERATE THROUGH BASEMAP LAYERS AND LOAD THOSE THAT APPLY
-
-    //ITERATE THROUGH FEATURE LAYERS AND LOAD THOSE THAT APPLY
-        //SEARCHABLE?  EDITING T/F?
-}
+} // end Config_Load

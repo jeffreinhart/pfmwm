@@ -29,23 +29,30 @@ msieversion();
 //BROWSER CHECK <<<<<<
 
 require([
-    "esri/tasks/GeometryService"
+    "esri/config", "esri/urlUtils"
 ], function(
-    GeometryService
+    esriConfig, urlUtils
 ) {
-
+//    esri.config.defaults.io.corsEnabledServers.push("https://dev.dnr.state.mn.us/mndnr/rest/services");
     esriConfig.defaults.io.proxyUrl = "/proxy/";
-
-    esri.addProxyRule({
-        urlPrefix: "https://dev.dnr.state.mn.us/arcgis/rest/services/for/pfmwm_woodlandmgmtplanning/FeatureServer/2",
+    
+    //2K12CARRRION
+    urlUtils.addProxyRule({ 
+        urlPrefix: "https://dev.dnr.state.mn.us/mndnr/rest/services/",
         proxyUrl: "proxy.ashx"
     });
 
-    //2K12CARCASSTEST
-    esri.addProxyRule({
-        urlPrefix: "https://dev.dnr.state.mn.us/arcgis/rest/services/",
+    urlUtils.addProxyRule({ 
+        urlPrefix: "https://dev.dnr.state.mn.us/mndnr/rest/services/for/pfmwm_woodlandmgmtplanning/FeatureServer/1",
         proxyUrl: "proxy.ashx"
     });
+
+//    //2K12CARCASSTEST;
+//    esri.addProxyRule({
+//        urlPrefix: "https://dev.dnr.state.mn.us/arcgis/rest/services/",
+//        proxyUrl: "proxy.ashx"
+//    });
+    
 //    //2K12VOLE
 //    esri.addProxyRule({
 //        urlPrefix: "https://arcgis.dnr.state.mn.us/arcgis/rest/services/",

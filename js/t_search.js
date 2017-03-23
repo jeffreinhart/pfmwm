@@ -177,22 +177,28 @@ class Search {
                 //console.log(point);
                 var pointWebMercator = esri.geometry.geographicToWebMercator(point);
 
+                if ($('#txtSearchSec').val().trim() !== ''){
+                    map.centerAndZoom(pointWebMercator,15);
+                } else {
+                    map.centerAndZoom(pointWebMercator,12);
+                }
+                        
                 //console.log(data['results']['pls']['geom']);
-                var polygon = new esri.geometry.Polygon(data['results']['pls']['geom']);
-                polygon.setSpatialReference(new esri.SpatialReference({wkid : 26915 }));
-                var outSR = new esri.SpatialReference({ wkid : 102100 });
-                var gsvc = new esri.tasks.GeometryService("https://arcgis.dnr.state.mn.us/mndnr/rest/services/Utilities/Geometry/GeometryServer");
-
-                gsvc.project([polygon], outSR, function (outGeom) {
-                    //console.log(outGeom[0]);
-                    var highlightPolyGraphic = new esri.symbol.SimpleFillSymbol().setStyle(esri.symbol.SimpleFillSymbol.STYLE_SOLID).setColor(new dojo.Color([255,255,0,0.3]));
-                    var locationGraphic = new esri.Graphic(outGeom[0],highlightPolyGraphic);
-                    map.graphics.clear();
-                    map.graphics.add(locationGraphic);
-                    //console.log(locationGraphic);
-                    if ($('#txtSearchSec').val().trim() != '') map.centerAndZoom(pointWebMercator,15);
-                        else map.centerAndZoom(pointWebMercator,12);
-                })
+//                var polygon = new esri.geometry.Polygon(data['results']['pls']['geom']);
+//                polygon.setSpatialReference(new esri.SpatialReference({wkid : 26915 }));
+//                var outSR = new esri.SpatialReference({ wkid : 102100 });
+//                var gsvc = new esri.tasks.GeometryService("https://arcgis.dnr.state.mn.us/mndnr/rest/services/Utilities/Geometry/GeometryServer");
+//
+//                gsvc.project([polygon], outSR, function (outGeom) {
+//                    //console.log(outGeom[0]);
+//                    var highlightPolyGraphic = new esri.symbol.SimpleFillSymbol().setStyle(esri.symbol.SimpleFillSymbol.STYLE_SOLID).setColor(new dojo.Color([255,255,0,0.3]));
+//                    var locationGraphic = new esri.Graphic(outGeom[0],highlightPolyGraphic);
+//                    map.graphics.clear();
+//                    map.graphics.add(locationGraphic);
+//                    //console.log(locationGraphic);
+//                    if ($('#txtSearchSec').val().trim() != '') map.centerAndZoom(pointWebMercator,15);
+//                        else map.centerAndZoom(pointWebMercator,12);
+//                })
             }
         })
         .fail(function(xhr, txt, err) {

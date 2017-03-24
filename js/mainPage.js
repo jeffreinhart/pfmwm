@@ -11,9 +11,13 @@ require([
     setEventListeners();
     
     document.cookie = "mpGid=";
+    
+    var url = CONFIG.layers.management_plans.url;
+    var query = "query?where=not+reg_num+%3D+%27%27&outFields=reg_num%2C+globalid&returnGeometry=false&orderByFields=reg_num&f=json";
+    var urlQuery = url+query;
        
     $.ajax({
-        url: "https://dev.dnr.state.mn.us/mndnr/rest/services/for/pfmwm_woodlandmgmtplanning/FeatureServer/1/query?where=not+reg_num+%3D+%27%27&outFields=reg_num%2C+globalid&returnGeometry=false&orderByFields=reg_num&f=json",
+        url: urlQuery,
         dataType: "jsonp"
     }).done(function(data) {
         var jsonFeatures = data.features;

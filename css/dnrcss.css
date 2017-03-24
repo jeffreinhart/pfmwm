@@ -345,6 +345,19 @@ a.close-tab:hover {
     color: #000000;
 }
 
+.legend_boxes {
+    width: 20px;
+    height: 14px;
+}
+
+#county_pls_legend {
+    border: 2px solid rgb(225,225,225);
+}
+
+#management_plans_legend {
+    border: 2px solid rgb(132,0,168);
+    background-color: rgb(223,115,255);
+}
 
 /* Map tools */
 

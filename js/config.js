@@ -1,12 +1,19 @@
-var version = "dev"
-// var version = "prod"
+//var version = "dev"
+ var version = "prod"
 
+// CARRION (gp service, maybe pfmwm services)
+var gpUrl = "https://dev.dnr.state.mn.us/mndnr/rest/services/";
 var extUrl = "https://dev.dnr.state.mn.us/mndnr/rest/services/";
+// CARCASSTEST (image service)
 var pubUrl = "http://arcgis.dev.dnr.state.mn.us/arcgis/rest/services/";
 
 if (version == "prod") {
-    var extUrl = "to be added";
-    var pubUrl = "to be added";
+    // CARRION (gp service, still needs to be moved)
+    var gpUrl = "https://dev.dnr.state.mn.us/mndnr/rest/services/";
+    // SALMON (pfmwm services)
+    var extUrl = "http://arcgis.intranet.mndnr.dnr.state.mn.us/arcgis/rest/services/";
+    // CARCASSTEST (image service)
+    var pubUrl = "http://arcgis.dev.dnr.state.mn.us/arcgis/rest/services/";
 }
 
 var CONFIG = {
@@ -34,7 +41,7 @@ var CONFIG = {
     },
     "gpTools": {
         "getMgmtPlanAttributesJson": {
-            "url": extUrl+"for/pfmwmGp/GPServer/getMgmtPlanAttributesJson"
+            "url": gpUrl+"for/pfmwmGp/GPServer/getMgmtPlanAttributesJson"
         }
     },
     "projectTools": [

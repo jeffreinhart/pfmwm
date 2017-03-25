@@ -103,3 +103,19 @@ function jsonToForm(jsonIn, divId){
 function disableForm(formID){
     $('#'+formID).children(':input').attr('disabled', 'disabled');
 }
+
+function goToMpDetails(mpGidIn) {
+    document.cookie = "mpGid="+mpGidIn;
+    window.location.href = "stew-plan-details.html";
+}
+
+function dateToMMDDYYYY(value) {
+    date = new Date(value);
+    console.log(date);
+    mmddyyyy = (date.getUTCMonth() + 1) + '/' + date.getUTCDate() + '/' +  date.getUTCFullYear();
+    return mmddyyyy;
+}
+
+function numberToFixed1(value) {
+    return value.toFixed(1);
+};

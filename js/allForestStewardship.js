@@ -5,15 +5,17 @@ var map;
 var lastFl; // last feature layer to load, hide spinner on update-end
 
 require([
-    "esri/map","esri/layers/FeatureLayer",
+    "esri/map", "esri/layers/FeatureLayer", "esri/InfoTemplate",
     "esri/tasks/GeometryService",
-    "esri/graphic", "esri/symbols/SimpleFillSymbol",
+    "esri/graphic", "esri/symbols/SimpleFillSymbol", 
     "dojo/parser", "dojo/json", "dojo/dom",
     "dijit/layout/BorderContainer", "dijit/layout/ContentPane",
     "dojo/domReady!","esri/virtualearth/VEGeocoder"
 ], function(
-    Map, FeatureLayer, GeometryService,
-    Graphic, SimpleFillSymbol, parser, json, dom
+    Map, FeatureLayer, InfoTemplate,
+    GeometryService, 
+    Graphic, SimpleFillSymbol,
+    parser, json, dom
 ) {
     map = new Map("map", {
         basemap: "satellite",
@@ -87,10 +89,18 @@ function Config_Load() {
     map.addLayer(ctyplsFl);
     
     // add management plans layer
+    var infoTemplateMp = new esri.InfoTemplate(
+        'Plan Info',
+        'Plan Date: ${plan_date:dateToMMDDYYYY}<br>' +
+        'Plan Acres: ${acres_plan:numberToFixed1}<br>' +
+        '<button type="button" onclick="goToMpDetails(\'${globalid}\')">' +
+            'Go To Details</button>'
+    );
     mpConfig = CONFIG.layers.management_plans;
     var mpFl = new esri.layers.FeatureLayer(mpConfig.url, {
         mode: esri.layers.FeatureLayer.MODE_SNAPSHOT,
         outFields : mpConfig.outFields,
+        infoTemplate: infoTemplateMp,
         id: mpConfig.name,
         opacity: mpConfig.opacity
     });

@@ -24,7 +24,7 @@
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon"/>
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon"/>
 </head>
-<body id="map-root" class="claro">
+<body id="map-root" class="claro dashboardBg">
     <div id="header" class="shadow">
         <div id="title">
             <img id=logo src="assets/img/Capture.JPG" alt="MNDNR logo">
@@ -32,19 +32,42 @@
         </div>
     </div>
     <img id="loading" src="assets/img/loading.gif" class="loading" alt="loading spinner">
-    <div>
-        <a href='all-forest-stewardship.html'>All Forest Stewardship Map</a><br>
+    
+    <div class='container'>
+        <h1>PFM Dashboard</h1>
+        <h2>Search</h2>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <label for="regNumSearch">By Registration Number: </label>
+            </div>
+            <div class="col-sm-4">
+                <input id="regNumSearch" type="text">
+            </div>
+            <div class="col-sm-5">
+                <button onclick="goStewPlanDetails()" class="btn btn-inline">Go</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <label for="lcSearch">By Land Contact: </label>
+            </div>
+            <div class="col-sm-4">
+                <input id="lcSearch" type="text">
+            </div>
+            <div class="col-sm-5">
+                <button onclick="goLcDetails()" class="btn btn-inline">Go</button>
+            </div>
+        </div>
+
+
+        <h2>Maps</h2>
+        <a href='all-forest-stewardship.html'>All Forest Stewardship Map</a><br><br>
+        <button id="logout" class="btn"><i class="glyphicon glyphicon-log-out"></i></br>Logout</button>
+
     </div>
-    
-    <label for="regNumSearch">Enter a registration number: </label>
-    <input id="regNumSearch">
-    <button onclick="goStewPlanDetails()" class="btn">Go</button>
-    <p hidden id="selected-globalid"></p>
-    
-    <br>
-    <button id="logout"><i class="glyphicon glyphicon-log-out"></i></br>Logout</button>
-    
-    
+
     <!--Import the Javascript here so it loads faster-->
     <script type="text/javascript" src="js/libs/jquery-1-11-3.min.js"></script>
     <script type="text/javascript" src="js/libs/jquery-ui-1.10.2.min.js"></script>

@@ -15,11 +15,13 @@ require([
     var url = CONFIG.layers.management_plans.url;
     var query = "query?where=not+reg_num+%3D+%27%27&outFields=reg_num%2C+globalid&returnGeometry=false&orderByFields=reg_num&f=json";
     var urlQuery = url+query;
-       
+    
+    // build registration number autocomplete
     $.ajax({
         url: urlQuery,
         dataType: "jsonp"
     }).done(function(data) {
+        // build autocomplete list
         var jsonFeatures = data.features;
         $.each(jsonFeatures, function(i, item){
            regNumArr.push({
@@ -27,7 +29,8 @@ require([
                 "value": item.attributes.globalid
             });
         });
-        
+        // on autocomplete for registration number search,
+        // show registration number, get globalid
         $("#regNumSearch").autocomplete({
             source: regNumArr,
             minLength: 2,
@@ -41,7 +44,7 @@ require([
                 document.cookie = "mpGid="+ui.item.value;
             }
         });
-    });
+    }); // end build registration number autocomplete
     
 }); // end require
 
@@ -73,12 +76,12 @@ function goStewPlanDetails(){
 }; // end goStewPlanDetails
 
 function Config_Load() {
-    var pageName = "main1"
+    var pageName = "main1" // set back to "main" to get splash page going
     //SET TITLE OF PAGE IN TAB AND IN BANNER
     document.title = CONFIG.title;
     $("#appTitle").text(CONFIG.title);
 
-    //ITERATE THROUGH TOOLS AND LOAD THOSE THAT APPLY
+    //ITERATE THROUGH TOOLS AND LOAD THOSE THAT APPLY (just splash page here)
     $.each(CONFIG.projectTools, function(index, value) {
         try {            
             if (value.load.includes(pageName)) {
@@ -89,11 +92,4 @@ function Config_Load() {
             console.log(err.message);
         }
     });
-
-    //ITERATE THROUGH WORKING LAYERS AND LOAD THOSE THAT APPLY
-
-    //ITERATE THROUGH BASEMAP LAYERS AND LOAD THOSE THAT APPLY
-
-    //ITERATE THROUGH FEATURE LAYERS AND LOAD THOSE THAT APPLY
-        //SEARCHABLE?  EDITING T/F?
-}
+} // end Config_Load

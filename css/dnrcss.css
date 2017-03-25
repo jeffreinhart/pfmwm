@@ -46,6 +46,10 @@ legend {
     border-bottom: none;
 }
 
+.dashboardBg {
+    background-color: #cccccc;
+}
+
 .sublabel {
     display:block;
     font-weight: 400;
@@ -497,6 +501,11 @@ a.close-tab:hover {
 .btn:hover {
     background: #666A6D;;
     color: #e4d9d4;
+}
+
+.btn-inline {
+    margin-top: 2px;
+    padding: 2px 14px;
 }
 
 .loading{position:absolute;top:50%;left:45%;z-index:1111;width:32px;height:32px;}

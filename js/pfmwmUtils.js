@@ -119,3 +119,49 @@ function dateToMMDDYYYY(value) {
 function numberToFixed1(value) {
     return value.toFixed(1);
 };
+
+function buildLcName(lcJson){
+    // gather variables
+    var outName = '';
+    var fName = nullToStr(lcJson.person_first_name);
+    var mName = nullToStr(lcJson.person_middle_name);
+    var lName = nullToStr(lcJson.person_last_name);
+    var nPre = nullToStr(lcJson.person_name_prefix);
+    var sName = nullToStr(lcJson.spouse_name);
+    var bName = nullToStr(lcJson.business_name);
+    // conditionals
+    if (nPre === 'c/o') {
+        // special case for care of
+        outName = bName+' c/o '+fName+' '+mName+' '+lName;
+    } else if (lName === '' && bName !== '') {
+        // no last name, so just business name
+        outName = bName;
+    } else {
+        // without or with spouse name
+        if(sName === ''){
+            outName = lName+", "+fName+" "+mName;
+        } else {
+            outName = lName+", "+fName+" "+mName+" & "+sName;
+        }
+    }
+    // trim any whitespace left from '' values
+    outName = outName.replace(/\s\s+/g, ' ').trim();
+    return outName;
+};
+
+function nullToStr(val){
+    if(val === null){
+        return '';
+    } else {
+        return val;
+    }
+};
+
+function compareAutoComplete(a,b) {
+    // for sorting list of autocomplete objects
+    if (a.label < b.label)
+        return -1;
+    if (a.label > b.label)
+        return 1;
+    return 0;
+};

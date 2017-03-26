@@ -52,7 +52,7 @@ require([
     document.cookie = "lcGid=";
     // query url
     var urlLc = CONFIG.tables.party_contacts.url;
-    var queryLc = "query?where=business_type+%3D+%27None%27&outFields=globalid%2C+person_first_name%2C+person_last_name%2C+business_name%2C+person_name_prefix%2C+spouse_name&returnGeometry=false&f=pjson";
+    var queryLc = "query?where=business_type+%3D+%27None%27&outFields=globalid%2C+person_first_name%2C+person_middle_name%2C+person_last_name%2C+business_name%2C+person_name_prefix%2C+spouse_name&returnGeometry=false&f=pjson";
     var urlQueryLc = urlLc+queryLc;
     // get data and build
     $.ajax({
@@ -63,10 +63,12 @@ require([
         var jsonFeaturesLc = data.features;
         $.each(jsonFeaturesLc, function(i, item){
            lcArr.push({
-                "label": item.attributes.person_last_name,
+                "label": buildLcName(item.attributes),
                 "value": item.attributes.globalid
             });
         });
+        // sort list
+        lcArr = lcArr.sort(compareAutoComplete);
         // on autocomplete for land contact search,
         // show registration number, get globalid
         $("#lcSearch").autocomplete({

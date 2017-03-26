@@ -24,7 +24,7 @@ var CONFIG = {
     "description": "Private Forest Management forest stewardship plans and forest management projects.",
     "production": "false",
     "layers": {
-        "management_plans" : {
+        "management_plans": {
             "url": extUrl+"for/pfmwm_woodlandmgmtplanning/FeatureServer/1/",
             "name": "management_plans",
             "type": "FeatureLayer",
@@ -36,7 +36,19 @@ var CONFIG = {
         "pfmwm_countypls": {
             "url": pubUrl+"for/pfmwm_countypls/MapServer",
             "name": "pfmwm_countypls",
-            "type": "ArcGISTiledMapServiceLayer",
+            "type": "ArcGISTiledMapServiceLayer"
+        }
+    },
+    "tables": {
+        "party_contacts": {
+            "url": extUrl+"for/pfmwm_woodlandmgmtplanning/FeatureServer/2/",
+            "name": "pfmm.pfmm.PARTY_CONTACTS",
+            "type": "Table"
+        },
+        "contact_events": {
+            "url": extUrl+"for/pfmwm_woodlandmgmtplanning/FeatureServer/3/",
+            "name": "pfmm.pfmm.contact_events",
+            "type": "Table"
         }
     },
     "gpTools": {

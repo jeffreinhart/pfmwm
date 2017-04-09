@@ -1,54 +1,50 @@
 var mpGid  = getCookie("mpGid");
+var globalidParse = mpGid.slice(1,-1);
 
 require([
-    "esri/tasks/Geoprocessor", "esri/map", "esri/graphic", 
+    "esri/map", "esri/graphic", 
     "dojo/domReady!"
 ], function(
-    Geoprocessor, Map, Graphic
+    Map, Graphic
 ) {
-    // LOAD SETTINGS FROM CONFIG.JS
+    // Load settings from CONFIG.js
     Config_Load();
 
-    // BUILD FORM
+    // Form DIV HTML IDs
     var divId = "management_plan_form_div";
     var formId = divId.slice(0,-4);
     
-    // GET RESULTS
-    var gp = new Geoprocessor(CONFIG.gpTools.getMgmtPlanAttributesJson.url);
+    // Get attributes
+    $.ajax({
+        url: CONFIG.py.getMgmtPlanAttrJson,
+        type: "POST",
+        data: {"mpgid": mpGid},
+        dataType: "jsonp"
+    }).done(function(data){
+        if(data.status === "OK") {
+            var jsonOut = {
+                "action": "stewPlanDetails.html",
+                "method": "post",
+                "id": formId,
+                "html": data.html
+            };
 
-    function executeGP(mpGid){
-        var params = {"management_plan_globalid": mpGid};
-        gp.submitJob(params, completeCallback, statusCallback);
-    }
+            jsonToForm(jsonOut, divId);
 
-    function statusCallback(jobInfo){
-        console.log(jobInfo.jobStatus);
-    }
-    
-    function completeCallback(jobInfo) {
-        gp.getResultData(
-            jobInfo.jobId,
-            "management_plan_attributes_json",
-            function(result){
-                var jsonIn = result.value;
-                var jsonOut = {
-                    "action": "stewPlanDetails.html",
-                    "method": "post",
-                    "id": formId,
-                    "html": jsonIn.html
-                };
+            disableForm(formId);
 
-                jsonToForm(jsonOut, divId);
-                
-                disableForm(formId);
-    
-                esri.hide(dojo.byId("loading"));                
-            } // end function for handling gp.getResultData result
-        ) // end gp.getResultData
-    }; // end completeCallback
-    
-    executeGP(mpGid);
-    
+            $("#loading").hide();   
+        } else {
+            $().toastmessage('showToast', {
+                type: "warning",
+                text: data.status+": "+data.message,
+                stayTime: 3000,
+                sticky: false
+            });
+        }
+    });                          
+
+    // Start map
     map = new Map("stew-plan-details-map", {
         basemap: "satellite",
         center: [-94, 46.300],
@@ -57,8 +53,8 @@ require([
         logo: false
     });
 
+    // Get feature and add to map
     // need to parse the globalid to handle the curly braces as special characters
-    globalidParse = mpGid.slice(1,-1);
     query = "query?where=globalid+%3D+%27%7B"+globalidParse+"%7D%27&geometryType=esriGeometryPolygon&outSR=4326&returnGeometry=true&f=pjson"
     $.ajax({
         url: CONFIG.layers.management_plans.url+query,
@@ -100,11 +96,4 @@ function Config_Load() {
             console.log(err.message);
         }
     });
-
-    //ITERATE THROUGH WORKING LAYERS AND LOAD THOSE THAT APPLY
-
-    //ITERATE THROUGH BASEMAP LAYERS AND LOAD THOSE THAT APPLY
-
-    //ITERATE THROUGH FEATURE LAYERS AND LOAD THOSE THAT APPLY
-        //SEARCHABLE?  EDITING T/F?
 }

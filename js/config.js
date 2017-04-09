@@ -5,6 +5,7 @@ var version = "dev"
 var extUrl = "https://dev.dnr.state.mn.us/mndnr/rest/services/";
 // CARCASSTEST (image service)
 var pubUrl = "http://arcgis.dev.dnr.state.mn.us/arcgis/rest/services/";
+var pyUrl = "https://dev.dnr.state.mn.us/for/pfmwmScripts/"
 
 if (version == "prod") {
     // SALMON (pfmwm services)
@@ -47,6 +48,10 @@ var CONFIG = {
             "name": "pfmm.pfmm.contact_events",
             "type": "Table"
         }
+    },
+    "py": {
+        "getMgmtPlanAttrJson": pyUrl+"get_mgmt_plan_attributes_json.py",
+        "getLandContAttrJson": pyUrl+"get_lc_attributes_json.py"
     },
     "projectTools": [
         {

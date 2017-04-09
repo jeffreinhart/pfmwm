@@ -101,6 +101,13 @@ label {
     margin-top: 8px;
 }
 
+.details-header{
+    color: #001A32;
+    padding: 4px;
+    background-color: #6699cc;
+    border-radius: 4px;
+}
+
 /* Search: Public Land Survey Radio Buttons (West/East) */
 label[for*=radioDir] {
     padding-left: 0.5em;
@@ -321,6 +328,26 @@ tr:nth-child(even) {
     color: #000000;
     font-family: 'Signika';
     font-weight: 600;
+}
+
+/* Data grids */
+#contact_events_dgv {
+    height: 130px;
+    border: 1px solid #000;
+}
+
+#stew_plans_dgv {
+    height: 130px;
+    border: 1px solid #000;
+}
+
+#project_areas_dgv {
+    height: 130px;
+    border: 1px solid #000;
+}
+
+.dojoxGridHeader .dojoxGridCell {
+    background: #001A32;
 }
 
 /* Hide Aside Button */

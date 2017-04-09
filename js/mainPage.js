@@ -137,11 +137,11 @@ function goLcDetails(){
             }); 
         } else {
             document.cookie = "lcGid="+lcGid;
-//            window.location.href = "land-contact-details.html";
+            window.location.href = "land-contact-details.html";
             console.log(document.cookie);
         }
     } else {
-//        window.location.href = "land-contact-details.html";
+        window.location.href = "land-contact-details.html";
         console.log(document.cookie);
     }
 }; // end goLcDetails

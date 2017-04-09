@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=9,IE=10,IE=11,chrome=1">
+    <title></title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="js/bootstrap-3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.16/esri/css/esri.css">
+    <link href="css/jquery.toastmessage.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="css/nanoscroller.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="css/dnrcss.css" rel="stylesheet" type="text/css" media="screen">
+
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+    <link href="css/jquery-ui.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon"/>
+</head>
+<body>
+    <div id="header" class="shadow">
+        <div id="title">
+            <img id=logo src="assets/img/Capture.JPG" alt="MNDNR logo">
+            <h1 id="appTitle"></h1>
+        </div>
+    </div>
+    <div class='col-sm-12'>
+        <h2 class="details-header">Land Contact Details</h2>
+    </div>
+    
+    <div id="land_contact_form_div" class="col-sm-6"></div>
+    
+    <div id="dgvs" class ="col-sm-6">
+        <h2>Contact Events</h2>
+        <div id="contact_events_dgv"></div>
+        <button id="go_contact_event_details" class="btn btn-inline" onclick="goCeDetailsDgv()"
+            disabled>Go To Details</button>
+        
+        <h2>Stewardship Plans</h2>
+        <div id="stew_plans_dgv"></div>
+        <button id="go_stew_plan_details" class="btn btn-inline" onclick="goMpDetailsDgv()"
+            disabled>Go To Details</button>
+        
+        <h2>Project Areas</h2>
+        <div id="project_areas_dgv"></div>
+        <button id="go_project_area_details" class="btn btn-inline" onclick="goPaDetailsDgv()"
+            disabled>Go To Details</button>
+    </div>
+    
+    <img id="loading" src="assets/img/loading.gif" class="loading" alt="loading spinner">    
+    
+    <!--Import the Javascript here so it loads faster-->
+    <script type="text/javascript" src="js/libs/jquery-1-11-3.min.js"></script>
+    <script type="text/javascript" src="js/libs/jquery-ui-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/libs/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="js/libs/jquery-spin.js"></script>
+    <script type="text/javascript" src="js/libs/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/libs/jquery.ui.selectmenu.js"></script>
+    <script type="text/javascript" src="js/libs/jquery.nanoscroller.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/libs/esri3.16.js"></script>
+    <script type="text/javascript" src="js/libs/toast/javascript/jquery.toastmessage.js"></script>
+    <script type="text/javascript" src="js/libs/jquery.dform-1.1.0.min.js"></script>
+    <!-- CUSTOM JS DOWN HERE -->
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/pfmwmUtils.js"></script>
+    <script type="text/javascript" src="js/landContactDetails.js"></script>
+    <script type="text/javascript" src="js/divevents.js"></script>
+</body>
+</html>

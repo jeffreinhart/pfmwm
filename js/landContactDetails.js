@@ -82,13 +82,15 @@ require([
             });
             // create store
             var storeMp = new ItemFileWriteStore({data: dataMp});
-            // set up layout      
+            // set up layout
+            var currentYear = new Date().getFullYear()
             var layoutMp = [[
               {'name': 'Plan Date', 'field': 'management_plans.plan_date', 'width': '90px'},
               {'name': 'Acres', 'field': 'management_plans.acres_plan', 'width': '70px'},
               {'name': 'Is Owner', 'field': 'is_owner', 'width': '80px'},
               {'name': 'Registered', 'field': 'registered', 'width': '80px'},
               {'name': 'Expiration Date', 'field': 'expiration_date', 'width': '120px'},
+              {'name': '2c '+currentYear, 'field': 'two_c_short', 'width': '80px'},
               {'name': 'Plan Writer', 'field': 'plan_writer', 'width': '150px'},
               {'name': 'Counties', 'field': 'counties', 'width': '150px'},
               {'name': 'PLS Section', 'field': 'pls_section', 'width': '150px'} 

@@ -9,6 +9,9 @@ require([
 ) {
     // Load settings from CONFIG.js
     Config_Load();
+    
+    //Set listeners for Standard Div Events -- located in divEvents.js
+    setEventListeners();
 
     // Form DIV HTML IDs
     var divId = "management_plan_form_div";

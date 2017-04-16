@@ -7,6 +7,14 @@ function setEventListeners(){
     
     $('#backButton').click(function(){
         window.location = 'main.html';
+    });
+    
+    $('#planDetailsButton').click(function(){
+        goStewPlanDetails();
+    });
+    
+    $('#lcDetailsButton').click(function(){
+        goLcDetails();
     })
 }
 

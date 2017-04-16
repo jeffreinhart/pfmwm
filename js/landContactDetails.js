@@ -4,17 +4,32 @@ var gridMp;
 var gridPa;
 
 require([
-    'dojox/grid/DataGrid', 'dojo/data/ItemFileWriteStore',
+    'dojox/grid/DataGrid', 'dojo/data/ItemFileReadStore',
+    'dojo/date/stamp', 'dojo/date/locale',
     "dojo/domReady!"
 ], function(
-    DataGrid, ItemFileWriteStore
+    DataGrid, ItemFileReadStore,
+    stamp, locale
 ) {
     // Load settings from CONFIG.js
     Config_Load();
+    
+    //Set listeners for Standard Div Events -- located in divEvents.js
+    setEventListeners();
 
     // Form DIV HTML IDs
     var divId = "land_contact_form_div";
     var formId = divId.slice(0,-4);
+    
+    // Formatting dates
+    function formatDate(datum){
+        /* Format the value in store, so as to be displayed.*/
+        var d = stamp.fromISOString(datum);
+        return locale.format(
+            d,
+            {selector: 'date', formatLength: 'short', fullYear: true}
+        );
+    }
     
     // Get attributes
     $.ajax({
@@ -44,10 +59,10 @@ require([
                 dataCe.items.push(value);
             });
             // create store
-            var storeCe = new ItemFileWriteStore({data: dataCe});
+            var storeCe = new ItemFileReadStore({data: dataCe});
             // set up layout
             var layoutCe = [[
-              {'name': 'Date', 'field': 'contact_events.contact_date', 'width': '90px'},
+              {'name': 'Date', 'field': 'contact_events.contact_date', 'width': '90px', formatter: formatDate},
               {'name': 'DNR Staff', 'field': 'dnr_staff', 'width': '150px'},
               {'name': 'Partner Forester', 'field': 'partner_forester', 'width': '150px'},
               {'name': 'Subject', 'field': 'contact_events.subject', 'width': '100px'},
@@ -60,7 +75,8 @@ require([
                 id: 'gridCe',
                 store: storeCe,
                 structure: layoutCe,
-                rowSelector: '20px'});
+                rowSelector: '20px',
+                sortInfo: 1});
             // append the new grid to the div
             gridCe.placeAt("contact_events_dgv");
             // Call startup() to render the grid
@@ -81,17 +97,17 @@ require([
                 dataMp.items.push(value);
             });
             // create store
-            var storeMp = new ItemFileWriteStore({data: dataMp});
+            var storeMp = new ItemFileReadStore({data: dataMp});
             // set up layout
             var currentYear = new Date().getFullYear()
             var layoutMp = [[
-              {'name': 'Plan Date', 'field': 'management_plans.plan_date', 'width': '90px'},
+              {'name': 'Plan Date', 'field': 'management_plans.plan_date', 'width': '90px', formatter: formatDate},
               {'name': 'Acres', 'field': 'management_plans.acres_plan', 'width': '70px'},
               {'name': 'Is Owner', 'field': 'is_owner', 'width': '80px'},
-              {'name': 'Registered', 'field': 'registered', 'width': '80px'},
-              {'name': 'Expiration Date', 'field': 'expiration_date', 'width': '120px'},
+              {'name': 'Registered', 'field': 'registered', 'width': '90px'},
+              {'name': 'Expiration Date', 'field': 'expiration_date', 'width': '120px', formatter: formatDate},
               {'name': '2c '+currentYear, 'field': 'two_c_short', 'width': '80px'},
-              {'name': 'Plan Writer', 'field': 'plan_writer', 'width': '150px'},
+              {'name': 'Plan Writer', 'field': 'plan_writer', 'width': '180px'},
               {'name': 'Counties', 'field': 'counties', 'width': '150px'},
               {'name': 'PLS Section', 'field': 'pls_section', 'width': '150px'} 
             ]];
@@ -100,7 +116,8 @@ require([
                 id: 'gridMp',
                 store: storeMp,
                 structure: layoutMp,
-                rowSelector: '20px'});
+                rowSelector: '20px',
+                sortInfo: 1});
             // append the new grid to the div
             gridMp.placeAt("stew_plans_dgv");
             // Call startup() to render the grid
@@ -121,14 +138,14 @@ require([
                 dataPa.items.push(value);
             });
             // create store
-            var storePa = new ItemFileWriteStore({data: dataPa});
+            var storePa = new ItemFileReadStore({data: dataPa});
             // set up layout      
             var layoutPa = [[
-              {'name': 'Start Date', 'field': 'project_areas.anticipated_project_start_date', 'width': '90px'},
-              {'name': 'Plan Writer', 'field': 'writer', 'width': '150px'},
+              {'name': 'Start Date', 'field': 'project_areas.anticipated_project_start_date', 'width': '90px', formatter: formatDate},
+              {'name': 'Plan Writer', 'field': 'writer', 'width': '180px'},
               {'name': 'Cost Share Approved', 'field': 'project_areas.total_cost_share_approved', 'width': '150px'},
               {'name': 'Approved By', 'field': 'approver', 'width': '150px'},
-              {'name': 'Certified Date', 'field': 'project_areas.practices_certified_date', 'width': '110px'},
+              {'name': 'Certified Date', 'field': 'project_areas.practices_certified_date', 'width': '110px', formatter: formatDate},
               {'name': 'Practices', 'field': 'practices', 'width': '1000px'}
             ]];
             // create grid
@@ -136,7 +153,8 @@ require([
                 id: 'gridPa',
                 store: storePa,
                 structure: layoutPa,
-                rowSelector: '20px'});
+                rowSelector: '20px',
+                sortInfo: 1});
             // append the new grid to the div
             gridPa.placeAt("project_areas_dgv");
             // Call startup() to render the grid

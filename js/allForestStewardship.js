@@ -53,11 +53,11 @@ require([
         //Finished Loading so hide the spinny dealie
         if(lastFl == null){
             // no layers to wait for, so just hide it
-            esri.hide(dojo.byId("loading"));
+            $("#loading").hide();
         } else {
             // layer to wait for, so let that finish updating first
             lastFl.on("update-end", function(e) {
-                esri.hide(dojo.byId("loading"));
+                $("#loading").hide();
             });
         };// end if else hide spinner
     });// end map.on("load"...

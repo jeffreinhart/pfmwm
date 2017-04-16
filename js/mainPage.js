@@ -36,6 +36,9 @@ require([
             source: regNumArr,
             minLength: 2,
             autoFocus: true,
+            create: function() {
+                $('#regNumSearch').prop("disabled", false);
+            },
             search: function() {
                 // if a new search, reset cookie
                 document.cookie = "mpGid=";
@@ -75,6 +78,7 @@ require([
             source: lcArr,
             autoFocus: true,
             create: function() {
+                $('#lcSearch').prop("disabled", false);
                 $("#loading").hide();
             },
             search: function() {

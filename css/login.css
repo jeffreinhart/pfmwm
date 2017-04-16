@@ -114,7 +114,7 @@ table {
   
 }
 body {
-   background: #373737 url("../assets/img/Cloth-Fabric-Background-16.jpg") 0 0 repeat;
+  background-color: #CCD7E0;
   font: 14px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #404040;
   padding-top: 50px;
@@ -322,7 +322,7 @@ label {
 }
 
 #title{
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size:24px;
   font-weight: bold;
   color: #DBC555;

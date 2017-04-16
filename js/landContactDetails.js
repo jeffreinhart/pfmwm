@@ -182,7 +182,7 @@ function Config_Load() {
     var pageName = "land-contact-details";
     //SET TITLE OF PAGE IN TAB AND IN BANNER
     document.title = CONFIG.title;
-    $("#appTitle").text(CONFIG.title);
+    $("#appTitle").text(CONFIG.appTitle);
 
     //ITERATE THROUGH TOOLS AND LOAD THOSE THAT APPLY
     $.each(CONFIG.projectTools, function(index, value) {

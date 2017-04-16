@@ -10,7 +10,7 @@ class SplashScreen {
                     "<div class='modal-header'>" +
                     "</div>" +
                     "<div id='scrollable' class='modal-body'>" +
-                        "<h1>"+CONFIG.title+"</h1>" +
+                        "<h1>"+CONFIG.appTitle+"</h1>" +
                         "<p><b>General Disclaimer:</b></br>" +
                             "<div class='dont-break-out'>" +
                             "<p>"+CONFIG.description+"</p>" +

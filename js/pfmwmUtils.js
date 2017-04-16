@@ -1,4 +1,4 @@
-//var role = checkLoginGetRole();
+var role = checkLoginGetRole();
 var fullPageZoom = [[-94, 46.300],6]
 
 function checkLoginGetRole() {

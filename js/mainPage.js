@@ -151,10 +151,10 @@ function goLcDetails(){
 }; // end goLcDetails
 
 function Config_Load() {
-    var pageName = "main1" // set back to "main" to get splash page going
+    var pageName = "main" // set back to "main" to get splash page going
     //SET TITLE OF PAGE IN TAB AND IN BANNER
     document.title = CONFIG.title;
-    $("#appTitle").text(CONFIG.title);
+    $("#appTitle").text(CONFIG.appTitle);
 
     //ITERATE THROUGH TOOLS AND LOAD THOSE THAT APPLY (just splash page here)
     $.each(CONFIG.projectTools, function(index, value) {

@@ -4,7 +4,7 @@ var version = "dev"
 // CARRION (pfmwm services)
 var extUrl = "https://dev.dnr.state.mn.us/mndnr/rest/services/";
 // CARCASSTEST (image service)
-var pubUrl = "http://arcgis.dev.dnr.state.mn.us/arcgis/rest/services/";
+var pubUrl = "https://arcgis.dev.dnr.state.mn.us/arcgis/rest/services/";
 var pyUrl = "https://dev.dnr.state.mn.us/for/pfmwmScripts/"
 
 if (version == "prod") {
@@ -15,9 +15,10 @@ if (version == "prod") {
 }
 
 var CONFIG = {
-    "title": "Private Forest Management Web Module",
+    "title": "PFMWM: Minnesota DNR",
+    "appTitle": "Private Forest Management Web Module",
     "version": "1.00",
-    "date": "20170220",
+    "date": "20170416",
     "extranetid": "85",
     "description": "Private Forest Management forest stewardship plans and forest management projects.",
     "production": "false",

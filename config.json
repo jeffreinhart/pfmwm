@@ -1,36 +1,36 @@
 {
-  "title": "Sample App",
-  "version": "1.46",
-  "date": "20161221",
-  "extranetid": "85",
-  "description": "This is the description of my app",
-  "production": "true",
-  "layers": [
+"title": "Private Forest Management Web Module",
+"version": "1.00",
+"date": "20170416",
+"extranetid": "85",
+"description": "Private Forest Management forest stewardship plans and forest management projects.",
+"production": "false",
+"layers": [
     {
-      "devUrl": "https://dev.dnr.state.mn.us/arcgis/rest/services/ewr/SpringInventory/FeatureServer/0",
-      "prodUrl": "https://dev.dnr.state.mn.us/arcgis/rest/services/ewr/SpringInventory/FeatureServer/0",
-      "name": "CandidateLayer",
-      "type": "FeatureLayer",
-      "searchable": "true",
-      "editable": "true",
-      "outFields": ["objectid","relateid","survey_name"]
+        "devUrl": "",
+        "prodUrl": "",
+        "name": "seeConfigJs",
+        "type": "FeatureLayer",
+        "searchable": "true",
+        "editable": "true",
+        "outFields": ["*"]
     }
-  ],
-  "projectTools": [
+],
+"projectTools": [
 
-  ],
-  "contacts": [
+],
+"contacts": [
     {
-      "type": "developer",
-      "name": "chpoulio"
+        "type": "developer",
+        "name": "jereinha"
     },
     {
-      "type": "support",
-      "name": "jajohnso"
+        "type": "support",
+        "name": "jereinha"
     },
     {
-      "type": "users",
-      "name": "MyAppADGroup"
+        "type": "users",
+        "name": "MyAppADGroup"
     }
-  ]
+]
 }

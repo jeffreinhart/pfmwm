@@ -81,7 +81,7 @@ function Config_Load() {
     
     //SET TITLE OF PAGE IN TAB AND IN BANNER
     document.title = CONFIG.title;
-    $("#appTitle").text(CONFIG.title);
+    $("#appTitle").text(CONFIG.appTitle);
        
     // add county_pls tiled map service
     ctyplsConfig = CONFIG.layers.pfmwm_countypls;

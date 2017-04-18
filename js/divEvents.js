@@ -67,4 +67,11 @@ function setCustomEventListeners(){
     $("#cbx_management_plans").click(function(){
         map._layers.management_plans.setVisibility(this.checked);
     });
+    
+        //First remove
+    $("#cbx_project_areas").unbind('click');
+    //Then set events
+    $("#cbx_project_areas").click(function(){
+        map._layers.project_areas.setVisibility(this.checked);
+    });
 }

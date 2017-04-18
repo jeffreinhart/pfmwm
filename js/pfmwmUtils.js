@@ -1,4 +1,4 @@
-var role = checkLoginGetRole();
+//var role = checkLoginGetRole();
 var fullPageZoom = [[-94, 46.300],6]
 
 function checkLoginGetRole() {
@@ -109,6 +109,12 @@ function goToMpDetails(mpGidIn) {
     window.location.href = "stew-plan-details.html";
 }
 
+function goToPaDetails(paGidIn) {
+    console.log("goToPaDetails", paGidIn);
+    document.cookie = "paGid="+paGidIn;
+//    window.location.href = "project-area-details.html";
+}
+
 function dateToMMDDYYYY(value) {
     date = new Date(value);
     console.log(date);
@@ -118,6 +124,10 @@ function dateToMMDDYYYY(value) {
 
 function numberToFixed1(value) {
     return value.toFixed(1);
+};
+
+function numberToFixed2(value) {
+    return value.toFixed(2);
 };
 
 function buildLcName(lcJson){

@@ -433,6 +433,11 @@ a.close-tab:hover {
     background-color: rgb(223,115,255);
 }
 
+#project_areas_legend {
+    border: 2px solid rgb(0,76,115);
+    background-color: rgb(115,223,255);
+}
+
 /* Map tools */
 
 .esriSimpleSliderMoveButton {

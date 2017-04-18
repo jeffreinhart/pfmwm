@@ -4,7 +4,8 @@
 <head>
     <meta http-equiv="apple-mobile-web-app-capable" content="yes">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=9,IE=10,IE=11,IE=edge,chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=9,IE=10,IE=11,chrome=1">
+    <title></title>
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="-1">
     <!-- Latest compiled and minified CSS -->
@@ -20,54 +21,40 @@
 
     <link href="css/jquery-ui.css" rel="stylesheet">
 
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon"/>
-    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="assets/img/favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="assets/img/favicon/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="assets/img/favicon/manifest.json">
+    <link rel="mask-icon" href="assets/img/favicon/safari-pinned-tab.svg" color="#003865">
+    <link rel="shortcut icon" href="assets/img/favicon/favicon.ico" type="image/x-icon"/>
+    <meta name="theme-color" content="#ffffff">
+
 </head>
-<body id="map-root" class="claro dashboardBg">
-    <div id="header" class="shadow">
-        <div id="title">
-            <img id=logo src="assets/img/logo.png" alt="MNDNR logo">
-            <h1 id="appTitle"></h1><!--Dynamically added in the js/config.js file -->
+
+    <body id="map-root" class="claro">
+        <div id="header" class="shadow">
+            <div id="title">
+                <img id=logo src="assets/img/logo.png" alt="MNDNR logo">
+                <h1 id="appTitle"></h1>
+            </div>
         </div>
-    </div>
+    <div id="map"></div>
     <img id="loading" src="assets/img/loading.gif" class="loading" alt="loading spinner">
-    
-    <div id="spacer"></div>
-    
-    <div class='container'>
-        
-        <h1>PFM Dashboard</h1>
-        <h2>Search</h2>
-
-        <div class="row">
-            <div class="col-sm-3">
-                <label for="regNumSearch">By Registration Number: </label>
-            </div>
-            <div class="col-sm-6">
-                <input id="regNumSearch" type="text" disabled>
-            </div>
-            <div class="col-sm-3">
-                <button id="planDetailsButton" class="btn btn-inline">Go</button>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-3">
-                <label for="lcSearch">By Land Contact: </label>
-            </div>
-            <div class="col-sm-6">
-                <input id="lcSearch" type="text" disabled>
-            </div>
-            <div class="col-sm-3">
-                <button id="lcDetailsButton" class="btn btn-inline">Go</button>
-            </div>
-        </div>
-
-        <h2>Maps</h2>
-        <a href='all-forest-stewardship.html'>All Forest Stewardship Map</a><br><br>
-        <a href='all-management-projects.html'>All Management Projects Map</a><br><br>
-        <button id="logout" class="btn"><i class="glyphicon glyphicon-log-out"></i></br>Logout</button>
-
+    <div id="map-switcher">
+        <a class="first active" id="satellite">Aerial</a>
+        <a class="middle" id="streets">Streets</a>
+        <a class="last" id="gray">Light Grey</a>
+    </div>
+    <div id="main-nav">
+        <nav>
+            <ul id="buttonList">
+                <li id="aboutButton" class="panelbutton" tabname="about-tab"><i class="glyphicon glyphicon-map-marker"></i></br>About This Application</li>
+                <li id="legendButton" class="panelbutton" tabname="legend-tab"><i class="glyphicon glyphicon-menu-hamburger"></i></br>Legend</li>
+                <li id="searchButton" class="panelbutton" tabname="search-tab"><i class="glyphicon glyphicon-zoom-in"></i></br>Search</li>
+                <li id="backButton"><i class="glyphicon glyphicon-circle-arrow-left"></i></br>Back To PFM Dashboard</li>
+                <li id="logout" class="last"><i class="glyphicon glyphicon-log-out"></i></br>Logout</li>
+            </ul>
+        </nav>
     </div>
 
     <!--Import the Javascript here so it loads faster-->
@@ -85,7 +72,6 @@
     <script type="text/javascript" src="js/config.js"></script>
     <script type="text/javascript" src="js/divevents.js"></script>
     <script type="text/javascript" src="js/pfmwmUtils.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/mainPage.js"></script>
+    <script type="text/javascript" src="js/allManagementProjects.js"></script>
 </body>
 </html>

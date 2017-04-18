@@ -70,7 +70,7 @@ function addHomeSlider() {
 
 function Config_Load() {
     // pageName defines which tools load in which page
-    var pageName = "all-forest-stewardship";
+    var pageName = "all-management-projects";
     
     //SET TITLE OF PAGE IN TAB AND IN BANNER
     document.title = CONFIG.title;
@@ -81,23 +81,23 @@ function Config_Load() {
     var ctyplsFl = new esri.layers.ArcGISTiledMapServiceLayer(ctyplsConfig.url);
     map.addLayer(ctyplsFl);
     
-    // add management plans layer
-    var infoTemplateMp = new esri.InfoTemplate(
-        'Plan Info',
-        'Plan Date: ${plan_date:dateToMMDDYYYY}<br>' +
-        'Plan Acres: ${acres_plan:numberToFixed1}<br>' +
-        '<button type="button" onclick="goToMpDetails(\'${globalid}\')">' +
+    // add project areas layer
+    var infoTemplatePa = new esri.InfoTemplate(
+        'Project Area Info',
+        'Start Date: ${anticipated_project_start_date:dateToMMDDYYYY}<br>' +
+        'Cost Share Amount: ${total_cost_share_approved:numberToFixed2}<br>' +
+        '<button type="button" onclick="goToPaDetails(\'${globalid}\')">' +
             'Go To Details</button>'
     );
-    mpConfig = CONFIG.layers.management_plans;
-    var mpFl = new esri.layers.FeatureLayer(mpConfig.url, {
+    paConfig = CONFIG.layers.project_areas;
+    var paFl = new esri.layers.FeatureLayer(paConfig.url, {
         mode: esri.layers.FeatureLayer.MODE_SNAPSHOT,
-        outFields : mpConfig.outFields,
-        infoTemplate: infoTemplateMp,
-        id: mpConfig.name,
-        opacity: mpConfig.opacity
+        outFields : paConfig.outFields,
+        infoTemplate: infoTemplatePa,
+        id: paConfig.name,
+        opacity: paConfig.opacity
     });
-    lastFl = map.addLayer(mpFl);
+    lastFl = map.addLayer(paFl);
  
     //ITERATE THROUGH TOOLS AND LOAD THOSE THAT APPLY
     $.each(CONFIG.projectTools, function(index, value) {

@@ -151,7 +151,7 @@ function goLcDetails(){
 }; // end goLcDetails
 
 function Config_Load() {
-    var pageName = "main" // set back to "main" to get splash page going
+    var pageName = "main1" // set back to "main" to get splash page going
     //SET TITLE OF PAGE IN TAB AND IN BANNER
     document.title = CONFIG.title;
     $("#appTitle").text(CONFIG.appTitle);

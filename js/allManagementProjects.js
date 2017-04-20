@@ -1,4 +1,5 @@
 //STANDARD GLOBAL VARIABLES
+var pageName = window.location.pathname.split("/").pop();
 var map;
 
 //CUSTOM GLOBAL VARIABLES
@@ -68,10 +69,7 @@ function addHomeSlider() {
     }, dojo.query(".esriSimpleSliderIncrementButton")[0], "after");
 }
 
-function Config_Load() {
-    // pageName defines which tools load in which page
-    var pageName = "all-management-projects";
-    
+function Config_Load() {    
     //SET TITLE OF PAGE IN TAB AND IN BANNER
     document.title = CONFIG.title;
     $("#appTitle").text(CONFIG.appTitle);
@@ -86,7 +84,7 @@ function Config_Load() {
         'Project Area Info',
         'Start Date: ${anticipated_project_start_date:dateToMMDDYYYY}<br>' +
         'Cost Share Amount: ${total_cost_share_approved:numberToFixed2}<br>' +
-        '<button type="button" onclick="goToPaDetails(\'${globalid}\')">' +
+        '<button type="button" onclick="goToPaDetails(\'${globalid}\', \''+pageName+'\')">' +
             'Go To Details</button>'
     );
     paConfig = CONFIG.layers.project_areas;

@@ -83,9 +83,15 @@ function getCookie(cname) {
 }
 
 function delete_cookies() {
-    document.cookie = "email" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    document.cookie = "role" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    document.cookie = "fullname" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    var expire = '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = "email" + expire;
+    document.cookie = "role" + expire;
+    document.cookie = "fullname" + expire;
+    document.cookie = "firstvisit" + expire;
+    document.cookie = "prevpage" + expire;
+    document.cookie = "lcGid" + expire;
+    document.cookie = "mpGid" + expire;
+    document.cookie = "paGid" + expire;
     email = "";
     role = "";
     fullname = "";
@@ -104,13 +110,15 @@ function disableForm(formID){
     $('#'+formID).children(':input').attr('disabled', 'disabled');
 }
 
-function goToMpDetails(mpGidIn) {
+function goToMpDetails(mpGidIn, prevPage) {
     document.cookie = "mpGid="+mpGidIn;
+    document.cookie = "prevpage="+prevPage;
     window.location.href = "stew-plan-details.html";
 }
 
-function goToPaDetails(paGidIn) {
+function goToPaDetails(paGidIn, prevPage) {
     document.cookie = "paGid="+paGidIn;
+    document.cookie = "prevpage="+prevPage;
     window.location.href = "project-area-details.html";
 }
 

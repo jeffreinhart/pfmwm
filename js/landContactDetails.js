@@ -1,3 +1,4 @@
+var pageName = window.location.pathname.split("/").pop();
 var lcGid  = getCookie("lcGid");
 var gridCe;
 var gridMp;
@@ -167,7 +168,6 @@ require([
 });//end require
 
 function Config_Load() {
-    var pageName = "land-contact-details";
     //SET TITLE OF PAGE IN TAB AND IN BANNER
     document.title = CONFIG.title;
     $("#appTitle").text(CONFIG.appTitle);
@@ -189,17 +189,17 @@ function goCeDetailsDgv() {
     var rowCeDgv = gridCe.selection.getSelected();
     var ceGid = rowCeDgv[0]["contact_events.globalid"][0];
     console.log(ceGid);
-//    goToCeDetails(ceGid);
+//    goToCeDetails(ceGid, pageName);
 }// end goCeDetailsDgv
 
 function goMpDetailsDgv() {
     var rowMpDgv = gridMp.selection.getSelected();
     var mpGid = rowMpDgv[0]["management_plans.globalid"][0];
-    goToMpDetails(mpGid);
+    goToMpDetails(mpGid, pageName);
 }// end goMpDetailsDgv
 
 function goPaDetailsDgv() {
     var rowPaDgv = gridPa.selection.getSelected();
     var paGid = rowPaDgv[0]["project_areas.globalid"][0];
-    goToPaDetails(paGid);
+    goToPaDetails(paGid, pageName);
 }// end goPaDetailsDgv

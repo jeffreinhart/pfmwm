@@ -1,3 +1,4 @@
+var pageName = window.location.pathname.split("/").pop();
 var regNumArr = [];
 var lcArr = [];
 
@@ -114,9 +115,11 @@ function goStewPlanDetails(){
             }); 
         } else {
             document.cookie = "mpGid="+mpGid;
+            document.cookie = "prevpage="+pageName;
             window.location.href = "stew-plan-details.html";
         }
     } else {
+        document.cookie = "prevpage="+pageName;
         window.location.href = "stew-plan-details.html";
     }
 }; // end goStewPlanDetails
@@ -141,25 +144,25 @@ function goLcDetails(){
             }); 
         } else {
             document.cookie = "lcGid="+lcGid;
+            document.cookie = "prevpage="+pageName;
             window.location.href = "land-contact-details.html";
-            console.log(document.cookie);
         }
     } else {
+        document.cookie = "prevpage="+pageName;
         window.location.href = "land-contact-details.html";
-        console.log(document.cookie);
     }
 }; // end goLcDetails
 
 function Config_Load() {
-    var pageName = "main1" // set back to "main" to get splash page going
     //SET TITLE OF PAGE IN TAB AND IN BANNER
     document.title = CONFIG.title;
     $("#appTitle").text(CONFIG.appTitle);
-
+    
     //ITERATE THROUGH TOOLS AND LOAD THOSE THAT APPLY (just splash page here)
+    var firstVisit = getCookie("firstvisit");
     $.each(CONFIG.projectTools, function(index, value) {
         try {            
-            if (value.load.includes(pageName)) {
+            if (value.load.includes(pageName) && firstVisit !== "false") {
                 loadScript(value.file, loadTool, value);
             }
         }
@@ -167,5 +170,8 @@ function Config_Load() {
             console.log(err.message);
         }
     });
+
+    // First time through is done, so set cookie to not load splashscreen
+    document.cookie = "firstvisit=false";
 }; // end Config_Load
 

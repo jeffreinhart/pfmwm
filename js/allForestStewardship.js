@@ -1,4 +1,5 @@
 //STANDARD GLOBAL VARIABLES
+var pageName = window.location.pathname.split("/").pop();
 var map;
 
 //CUSTOM GLOBAL VARIABLES
@@ -68,10 +69,7 @@ function addHomeSlider() {
     }, dojo.query(".esriSimpleSliderIncrementButton")[0], "after");
 }
 
-function Config_Load() {
-    // pageName defines which tools load in which page
-    var pageName = "all-forest-stewardship";
-    
+function Config_Load() {    
     //SET TITLE OF PAGE IN TAB AND IN BANNER
     document.title = CONFIG.title;
     $("#appTitle").text(CONFIG.appTitle);
@@ -86,7 +84,7 @@ function Config_Load() {
         'Plan Info',
         'Plan Date: ${plan_date:dateToMMDDYYYY}<br>' +
         'Plan Acres: ${acres_plan:numberToFixed1}<br>' +
-        '<button type="button" onclick="goToMpDetails(\'${globalid}\')">' +
+        '<button type="button" onclick="goToMpDetails(\'${globalid}\', \''+pageName+'\')">' +
             'Go To Details</button>'
     );
     mpConfig = CONFIG.layers.management_plans;

@@ -70,28 +70,28 @@ var CONFIG = {
             //"file": "https://arcgis.dnr.state.mn.us/gis/template/js/t_about.js", //Dev file
             "file": "js/t_about.js", //Local file
             "type": "button",
-            "load": ["all-forest-stewardship", "all-management-projects"]
+            "load": ["all-forest-stewardship.html", "all-management-projects.html"]
         },
         {
             "name": "legend",
             //"file": "https://arcgis.dnr.state.mn.us/gis/template/js/t_legend.js", //Dev file
             "file": "js/t_legend.js", //Local file
             "type": "button",
-            "load": ["all-forest-stewardship", "all-management-projects"]
+            "load": ["all-forest-stewardship.html", "all-management-projects.html"]
         },
         {
             "name": "search",
             //"file": "https://arcgis.dnr.state.mn.us/gis/template/js/t_search.js", //Dev file
             "file": "js/t_search.js", //Local file
             "type": "button",
-            "load": ["all-forest-stewardship", "all-management-projects"]
+            "load": ["all-forest-stewardship.html", "all-management-projects.html"]
         },
         {
             "name": "splashscreen",
             //"file": "https://arcgis.dnr.state.mn.us/gis/template/js/t_splashscreen.js", //Dev file
             "file": "js/t_splashscreen.js", //Local file
             "type": "splashscreen",
-            "load": ["main"]
+            "load": ["main.html"]
         }
     ],
   "contacts": [

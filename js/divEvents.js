@@ -9,13 +9,18 @@ function setEventListeners(){
         window.location = 'main.html';
     });
     
+    $('#prevButton').click(function(){
+        prevPage = getCookie("prevpage");
+        window.location = prevPage;
+    })
+    
     $('#planDetailsButton').click(function(){
         goStewPlanDetails();
     });
     
     $('#lcDetailsButton').click(function(){
         goLcDetails();
-    })
+    });
 }
 
 function setCustomEventListeners(){

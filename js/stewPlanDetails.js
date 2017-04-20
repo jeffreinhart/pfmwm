@@ -26,7 +26,7 @@ require([
     }).done(function(data){
         if(data.status === "OK") {
             var jsonOut = {
-                "action": "stewPlanDetails.html",
+                "action": "stew-plan-details.html",
                 "method": "post",
                 "id": formId,
                 "html": data.html

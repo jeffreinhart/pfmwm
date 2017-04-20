@@ -110,9 +110,8 @@ function goToMpDetails(mpGidIn) {
 }
 
 function goToPaDetails(paGidIn) {
-    console.log("goToPaDetails", paGidIn);
     document.cookie = "paGid="+paGidIn;
-//    window.location.href = "project-area-details.html";
+    window.location.href = "project-area-details.html";
 }
 
 function dateToMMDDYYYY(value) {
@@ -174,4 +173,27 @@ function compareAutoComplete(a,b) {
     if (a.label > b.label)
         return 1;
     return 0;
+};
+
+// Formatting dates
+function formatDate(datum){
+    var outDate = '';
+    require([
+    'dojo/date/stamp', 'dojo/date/locale'
+    ], function(
+        stamp, locale
+    ) {
+        if(datum !== ''){
+            var d = stamp.fromISOString(datum);
+            outDate = locale.format(
+                d,
+                {selector: 'date', formatLength: 'short', fullYear: true}
+            );
+        }
+    });
+    return outDate;
+};
+
+function formatCurrency(number){
+    return (number).toLocaleString("en-US", {style: "currency", currency: "USD", minimumFractionDigits: 2});
 };

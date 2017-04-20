@@ -61,7 +61,8 @@ var CONFIG = {
     },
     "py": {
         "getMgmtPlanAttrJson": pyUrl+"get_mgmt_plan_attributes_json.py",
-        "getLandContAttrJson": pyUrl+"get_lc_attributes_json.py"
+        "getLandContAttrJson": pyUrl+"get_lc_attributes_json.py",
+        "getProjectAreaAttrJson": pyUrl+"get_project_area_attributes_json.py"
     },
     "projectTools": [
         {

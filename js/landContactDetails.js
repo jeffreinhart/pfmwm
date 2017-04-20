@@ -5,11 +5,9 @@ var gridPa;
 
 require([
     'dojox/grid/DataGrid', 'dojo/data/ItemFileReadStore',
-    'dojo/date/stamp', 'dojo/date/locale',
     "dojo/domReady!"
 ], function(
-    DataGrid, ItemFileReadStore,
-    stamp, locale
+    DataGrid, ItemFileReadStore
 ) {
     // Load settings from CONFIG.js
     Config_Load();
@@ -20,16 +18,6 @@ require([
     // Form DIV HTML IDs
     var divId = "land_contact_form_div";
     var formId = divId.slice(0,-4);
-    
-    // Formatting dates
-    function formatDate(datum){
-        /* Format the value in store, so as to be displayed.*/
-        var d = stamp.fromISOString(datum);
-        return locale.format(
-            d,
-            {selector: 'date', formatLength: 'short', fullYear: true}
-        );
-    }
     
     // Get attributes
     $.ajax({
@@ -143,7 +131,7 @@ require([
             var layoutPa = [[
               {'name': 'Start Date', 'field': 'project_areas.anticipated_project_start_date', 'width': '90px', formatter: formatDate},
               {'name': 'Plan Writer', 'field': 'writer', 'width': '180px'},
-              {'name': 'Cost Share Approved', 'field': 'project_areas.total_cost_share_approved', 'width': '150px'},
+              {'name': 'Cost Share Approved', 'field': 'project_areas.total_cost_share_approved', 'width': '150px', formatter: formatCurrency},
               {'name': 'Approved By', 'field': 'approver', 'width': '150px'},
               {'name': 'Certified Date', 'field': 'project_areas.practices_certified_date', 'width': '110px', formatter: formatDate},
               {'name': 'Practices', 'field': 'practices', 'width': '1000px'}
@@ -207,13 +195,11 @@ function goCeDetailsDgv() {
 function goMpDetailsDgv() {
     var rowMpDgv = gridMp.selection.getSelected();
     var mpGid = rowMpDgv[0]["management_plans.globalid"][0];
-    console.log(mpGid);
     goToMpDetails(mpGid);
 }// end goMpDetailsDgv
 
 function goPaDetailsDgv() {
     var rowPaDgv = gridPa.selection.getSelected();
     var paGid = rowPaDgv[0]["project_areas.globalid"][0];
-    console.log(paGid);
-//    goToPaDetails(paGid);
+    goToPaDetails(paGid);
 }// end goPaDetailsDgv

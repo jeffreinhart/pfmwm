@@ -237,6 +237,10 @@ nav ul li {
     display: block;
 }
 
+.p-left {
+    text-align: left;
+}
+
 #main-nav li:hover,
 #main-nav li:active {
     color: #fff;

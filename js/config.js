@@ -20,7 +20,7 @@ var CONFIG = {
     "version": "1.00",
     "date": "20170416",
     "extranetid": "85",
-    "description": "Private Forest Management forest stewardship plans and forest management projects.",
+    "description": "This application provides access to key information included in the DNR Forestry Private Forest Management Module. Not all registered stewardship plans have been mapped, and only mapped plans are included in this application. Users can view most information about Land Contacts, Service Providers, Forest Stewardship Plans, and Forest Management Projects. Contact Events can be added and edited for existing Land Contacts.",
     "production": "false",
     "layers": {
         "management_plans": {

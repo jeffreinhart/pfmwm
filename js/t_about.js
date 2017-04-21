@@ -8,11 +8,13 @@ class About {
             '<div class="aside-inner" align="center">' +
                 '<div class="content">' +
                     '<section class="results layers">' +
-                        '<h2>About this application:</h2>' +
+                        '<h2>About this map:</h2>' +
                         '<br>' +
-                        '<div class="dont-break-out">' +
-                            '<p align="left">This application allows the user to go to an area of interest either by panning and zooming, or using the search function. If there is a model available there, the user will then be able to click on the stream segment to view model information and download the model. If a model is listed, the user can click on the model for more information. There may be multiple models listed for one stream segment. This includes the original model and updates or LOMRs.</p>' +
-                            '<p align="left">The user is responsible for verifying the extent, date, and details of the model. This application is a work in progress and will be updated regularly. DNR staff are working on getting older models included in this application. More information on where models exist can be found on the Floodplain Program’s website at <a href="http://dnr.state.mn.us/waters/watermgmt_section/floodplain/index.html" target="_blank">http://dnr.state.mn.us/waters/watermgmt_section/floodplain/index.html</a>. For more information, please refer to the Help/FAQ button.</p>' +
+                        '<div class="dont-break-out p-left">' +
+                            '<p>This map page allows the user to go to an area of interest either by panning and zooming or by using the Search pane.</p>' +
+                            '<p>Search functions include by location (e.g. a state park), address (more complete addresses get better results), or public land survey section.</p>' +
+                            '<p>The base map can be changed using the buttons at the bottom of the page. Other layers can be turned off and on in the Legend pane.</p>' +
+                            '<p>To get more details about a feature on the map, click the feature for a popup that includes a summary and a Go To Details button.</p>' +
                         '</div>' +
                     '</section>' +
                 '</div>' +

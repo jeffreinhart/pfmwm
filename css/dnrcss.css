@@ -103,10 +103,28 @@ body#map-div {
 
 /*FORM STUFF*/
 form {
+    position: static;
+    z-index: 1;
     margin-top: 8px;
     padding:8px;
     background-color: #6699cc;
     border-radius: 4px;
+}
+
+#contact_event_form {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 200px;
+    width: 200px;
+    margin-top: -100px;
+    margin-left: -100px;
+    z-index: 20;
+    border: 1px solid #cccccc;
+    background-color: #6699cc;
+    border-radius: 4px;
+    padding:8px;
 }
 
 input[type="text"], input[type="number"] {
@@ -388,11 +406,29 @@ tr:nth-child(even) {
 }
 
 #stew_plans_dgv {
+    position: static;
+    z-index: 1;
+    height: 130px;
+    border: 1px solid #000;
+}
+
+#stew_plans_written_dgv {
+    position: static;
+    z-index: 1;
+    height: 130px;
+    border: 1px solid #000;
+}
+
+#stew_plans_approved_dgv {
+    position: static;
+    z-index: 1;
     height: 130px;
     border: 1px solid #000;
 }
 
 #project_areas_dgv {
+    position: static;
+    z-index: 1;
     height: 130px;
     border: 1px solid #000;
 }
@@ -611,7 +647,13 @@ a.close-tab:hover {
     float: right;
 }
 
-.loading{position:absolute;top:50%;left:45%;z-index:1111;width:32px;height:32px;}
+.loading{
+    position:absolute;
+    top:50%;
+    left:45%;
+    z-index:1049;
+    width:32px;
+    height:32px;}
 
 /* File Upload */
 .dropzone {

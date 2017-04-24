@@ -1,6 +1,7 @@
 var pageName = window.location.pathname.split("/").pop();
 var regNumArr = [];
 var lcArr = [];
+var spArr = [];
 
 require([
     "dojo/dom",
@@ -92,7 +93,48 @@ require([
                 document.cookie = "lcGid="+ui.item.value;
             }
         });
-    }); // end build registration number autocomplete
+    }); // end build land contact autocomplete
+    
+    // build service provider autocomplete
+    document.cookie = "spGid=";
+    // query url
+    var urlSp = CONFIG.tables.party_contacts.url;
+    var querySp = "query?where=business_type+<>+'None'&outFields=globalid%2C+person_first_name%2C+person_last_name%2C+business_type&returnGeometry=false&f=pjson";
+    var urlQuerySp = urlSp+querySp;
+    // get data and build
+    $.ajax({
+        url: urlQuerySp,
+        dataType: "jsonp"
+    }).done(function(data) {
+        // build autocomplete list
+        var jsonFeaturesSp = data.features;
+        $.each(jsonFeaturesSp, function(i, item){
+           spArr.push({
+                "label": buildSpName(item.attributes),
+                "value": item.attributes.globalid
+            });
+        });
+        // sort list
+        spArr = spArr.sort(compareAutoComplete);
+        // on autocomplete for land contact search,
+        // show registration number, get globalid
+        $("#spSearch").autocomplete({
+            source: spArr,
+            autoFocus: true,
+            create: function() {
+                $('#spSearch').prop("disabled", false);
+            },
+            search: function() {
+                // if a new search, reset cookie
+                document.cookie = "spGid=";
+            },
+            select: function(event, ui){
+                event.preventDefault();
+                $("#spSearch").val(ui.item.label);
+                document.cookie = "spGid="+ui.item.value;
+            }
+        });
+    }); // end build service provider autocomplete
 }); // end require
 
 function goStewPlanDetails(){
@@ -152,6 +194,35 @@ function goLcDetails(){
         window.location.href = "land-contact-details.html";
     }
 }; // end goLcDetails
+
+function goSpDetails(){
+    var spGid = getCookie("spGid");
+    if(spGid == ''){
+        // didn't pick from autocomplete, check if in array
+        var spName = $("#spSearch").val();
+        $.each(spArr, function(i, item){
+            if(item.label == spName){
+                spGid = item.value;
+                return false;
+            }
+        });
+        if(spGid == ''){
+            $().toastmessage('showToast', {
+                type: "warning",
+                text: "Name "+spName+" not found. Please search again.",
+                stayTime: 3000,
+                sticky: false
+            }); 
+        } else {
+            document.cookie = "spGid="+spGid;
+            document.cookie = "prevpage="+pageName;
+            window.location.href = "service-provider-details.html";
+        }
+    } else {
+        document.cookie = "prevpage="+pageName;
+        window.location.href = "service-provider-details.html";
+    }
+}; // end goSpDetails
 
 function Config_Load() {
     //SET TITLE OF PAGE IN TAB AND IN BANNER

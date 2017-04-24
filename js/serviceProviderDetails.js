@@ -1,8 +1,20 @@
 var pageName = window.location.pathname.split("/").pop();
-var lcGid  = getCookie("lcGid");
+var currentYear = new Date().getFullYear()
+var spGid  = getCookie("spGid");
 var gridCe;
-var gridMp;
+var gridMpPw;
+var gridMpPa;
 var gridPa;
+var layoutMp = [[
+    {'name': 'Plan Date', 'field': 'management_plans.plan_date', 'width': '90px', formatter: formatDate},
+    {'name': 'Acres', 'field': 'management_plans.acres_plan', 'width': '70px'},
+    {'name': 'Land Contact', 'field': 'land_contact', 'width': '250px'},
+    {'name': 'Registered', 'field': 'registered', 'width': '90px'},
+    {'name': '2c '+currentYear, 'field': 'two_c_short', 'width': '80px'},
+    {'name': 'Plan Writer', 'field': 'plan_writer', 'width': '180px'},
+    {'name': 'Counties', 'field': 'counties', 'width': '150px'},
+    {'name': 'PLS Section', 'field': 'pls_section', 'width': '150px'} 
+]];
 
 require([
     'dojox/grid/DataGrid', 'dojo/data/ItemFileReadStore',
@@ -17,19 +29,19 @@ require([
     setEventListeners();
 
     // Form DIV HTML IDs
-    var divId = "land_contact_form_div";
+    var divId = "service_provider_form_div";
     var formId = divId.slice(0,-4);
     
     // Get attributes
     $.ajax({
-        url: CONFIG.py.getLandContAttrJson,
+        url: CONFIG.py.getServiceProviderAttrJson,
         type: "POST",
-        data: {"lcgid": lcGid},
+        data: {"spgid": spGid},
         dataType: "jsonp"
     }).done(function(data){
         if(data.status === "OK") {
             var jsonOut = {
-                "action": "land-contact-details.html",
+                "action": "service-provider-details.html",
                 "method": "post",
                 "id": formId,
                 "html": data.html
@@ -52,7 +64,7 @@ require([
             // set up layout
             var layoutCe = [[
               {'name': 'Date', 'field': 'contact_events.contact_date', 'width': '90px', formatter: formatDate},
-              {'name': 'DNR Staff', 'field': 'dnr_staff', 'width': '150px'},
+              {'name': 'Land Contact', 'field': 'land_contact', 'width': '250px'},
               {'name': 'Partner Forester', 'field': 'partner_forester', 'width': '150px'},
               {'name': 'Subject', 'field': 'contact_events.subject', 'width': '100px'},
               {'name': 'Contact Type', 'field': 'contact_events.contact_event_type', 'width': '100px'},
@@ -75,45 +87,60 @@ require([
                 $('#edit_contact_event_details').prop("disabled", false);
             });
 
-            // Build datagrid for child stewardship plans
+            // Build datagrid for child stewardship plans written
             // set up data store
-            var dataMp = {
+            var dataMpPw = {
               identifier: "management_plans.globalid",
               items: []
             };
             // add items to data
-            $.each(data.mpDgv, function(index, value){
-                dataMp.items.push(value);
+            $.each(data.mpPwDgv, function(index, value){
+                dataMpPw.items.push(value);
             });
             // create store
-            var storeMp = new ItemFileReadStore({data: dataMp});
-            // set up layout
-            var currentYear = new Date().getFullYear()
-            var layoutMp = [[
-              {'name': 'Plan Date', 'field': 'management_plans.plan_date', 'width': '90px', formatter: formatDate},
-              {'name': 'Acres', 'field': 'management_plans.acres_plan', 'width': '70px'},
-              {'name': 'Is Owner', 'field': 'is_owner', 'width': '80px'},
-              {'name': 'Registered', 'field': 'registered', 'width': '90px'},
-              {'name': 'Expiration Date', 'field': 'expiration_date', 'width': '120px', formatter: formatDate},
-              {'name': '2c '+currentYear, 'field': 'two_c_short', 'width': '80px'},
-              {'name': 'Plan Writer', 'field': 'plan_writer', 'width': '180px'},
-              {'name': 'Counties', 'field': 'counties', 'width': '150px'},
-              {'name': 'PLS Section', 'field': 'pls_section', 'width': '150px'} 
-            ]];
+            var storeMpPw = new ItemFileReadStore({data: dataMpPw});
             // create grid
-            gridMp = new DataGrid({
-                id: 'gridMp',
-                store: storeMp,
+            gridMpPw = new DataGrid({
+                id: 'gridMpPw',
+                store: storeMpPw,
                 structure: layoutMp,
                 rowSelector: '20px',
                 sortInfo: 1});
             // append the new grid to the div
-            gridMp.placeAt("stew_plans_dgv");
+            gridMpPw.placeAt("stew_plans_written_dgv");
             // Call startup() to render the grid
-            gridMp.startup();
+            gridMpPw.startup();
             // on row click, enable go to details button
-            dojo.connect(gridMp, "onRowClick", function() {
-                $('#go_stew_plan_details').prop("disabled", false);
+            dojo.connect(gridMpPw, "onRowClick", function() {
+                $('#go_stew_plan_written_details').prop("disabled", false);
+            });
+
+            // Build datagrid for child stewardship plans approved
+            // set up data store
+            var dataMpPa = {
+              identifier: "management_plans.globalid",
+              items: []
+            };
+            // add items to data
+            $.each(data.mpPaDgv, function(index, value){
+                dataMpPa.items.push(value);
+            });
+            // create store
+            var storeMpPa = new ItemFileReadStore({data: dataMpPa});            
+            // create grid
+            gridMpPa = new DataGrid({
+                id: 'gridMpPa',
+                store: storeMpPa,
+                structure: layoutMp,
+                rowSelector: '20px',
+                sortInfo: 1});
+            // append the new grid to the div
+            gridMpPa.placeAt("stew_plans_approved_dgv");
+            // Call startup() to render the grid
+            gridMpPa.startup();
+            // on row click, enable go to details button
+            dojo.connect(gridMpPa, "onRowClick", function() {
+                $('#go_stew_plan_approved_details').prop("disabled", false);
             });
 
             // Build datagrid for child project areas
@@ -164,7 +191,6 @@ require([
             });
         }
     });
-
 });//end require
 
 function Config_Load() {
@@ -191,11 +217,17 @@ function editCeDetailsDgv() {
     ceDetailsOpen(ceGid);
 }// end goCeDetailsDgv
 
-function goMpDetailsDgv() {
-    var rowMpDgv = gridMp.selection.getSelected();
+function goMpPwDetailsDgv() {
+    var rowMpDgv = gridMpPw.selection.getSelected();
     var mpGid = rowMpDgv[0]["management_plans.globalid"][0];
     goToMpDetails(mpGid, pageName);
-}// end goMpDetailsDgv
+}// end goMpPwDetailsDgv
+
+function goMpPaDetailsDgv() {
+    var rowMpDgv = gridMpPa.selection.getSelected();
+    var mpGid = rowMpDgv[0]["management_plans.globalid"][0];
+    goToMpDetails(mpGid, pageName);
+}// end goMpPwDetailsDgv
 
 function goPaDetailsDgv() {
     var rowPaDgv = gridPa.selection.getSelected();

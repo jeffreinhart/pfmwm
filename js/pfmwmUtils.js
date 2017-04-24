@@ -122,6 +122,18 @@ function goToPaDetails(paGidIn, prevPage) {
     window.location.href = "project-area-details.html";
 }
 
+function ceDetailsOpen(ceGid) {
+    var htmlStr = '<p>'+ceGid+'</p>' +
+        '<button class="btn btn-inline" onclick="ceDetailsCancel()">Cancel</button>';
+    $('#contact_event_form').html(htmlStr);
+    $('#contact_event_form').show();
+}
+
+function ceDetailsCancel() {
+    // will likely need to clear objects here
+    $('#contact_event_form').hide();
+}
+
 function dateToMMDDYYYY(value) {
     date = new Date(value);
     console.log(date);
@@ -136,6 +148,15 @@ function numberToFixed1(value) {
 function numberToFixed2(value) {
     return value.toFixed(2);
 };
+
+function buildSpName(spJson){
+    // gather variables
+    var fName = nullToStr(spJson.person_first_name);
+    var lName = nullToStr(spJson.person_last_name);
+    var bType = nullToStr(spJson.business_type);
+    // out
+    return lName+', '+fName+' ('+bType+')';
+}; // end function buildSpName
 
 function buildLcName(lcJson){
     // gather variables
@@ -164,7 +185,7 @@ function buildLcName(lcJson){
     // trim any whitespace left from '' values
     outName = outName.replace(/\s\s+/g, ' ').trim();
     return outName;
-};
+}; // end function buildLcName
 
 function nullToStr(val){
     if(val === null){

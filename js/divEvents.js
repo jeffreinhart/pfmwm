@@ -1,5 +1,4 @@
 function setEventListeners(){
-    //THIS ONE MAY GO TO CUSTOM EVENT LISTENERS ....
     $('#logout').click(function() {
        delete_cookies();
        window.location = 'index.html';
@@ -20,6 +19,30 @@ function setEventListeners(){
     
     $('#lcDetailsButton').click(function(){
         goLcDetails();
+    });
+    
+    $('#spDetailsButton').click(function(){
+        goSpDetails();
+    });
+    
+    $('#edit_contact_event_details').click(function(){
+        editCeDetailsDgv();
+    });
+    
+    $('#go_stew_plan_details').click(function(){
+        goMpDetailsDgv();
+    });
+    
+    $('#go_stew_plan_written_details').click(function(){
+        goMpPwDetailsDgv();
+    });
+    
+    $('#go_stew_plan_approved_details').click(function(){
+        goMpPaDetailsDgv();
+    });
+    
+    $('#go_project_area_details').click(function(){
+        goPaDetailsDgv();
     });
 }
 

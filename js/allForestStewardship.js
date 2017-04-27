@@ -1,8 +1,5 @@
-//STANDARD GLOBAL VARIABLES
 var pageName = window.location.pathname.split("/").pop();
 var map;
-
-//CUSTOM GLOBAL VARIABLES
 var lastFl; // last feature layer to load, hide spinner on update-end
 
 require([

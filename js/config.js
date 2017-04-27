@@ -45,6 +45,14 @@ var CONFIG = {
             "url": pubUrl+"for/pfmwm_countypls/MapServer",
             "name": "pfmwm_countypls",
             "type": "ArcGISTiledMapServiceLayer"
+        },
+        "pfm_aors":{
+            "url": pubUrl+"for/pfm_aors/MapServer/0/",
+            "name": "pfm_aors",
+            "type": "FeatureLayer",
+            "searchable": "true",
+            "editable": "false",
+            "outFields": ["aor_id","aor","frstr"]
         }
     },
     "tables": {
@@ -71,21 +79,30 @@ var CONFIG = {
             //"file": "https://arcgis.dnr.state.mn.us/gis/template/js/t_about.js", //Dev file
             "file": "js/t_about.js", //Local file
             "type": "button",
-            "load": ["all-forest-stewardship.html", "all-management-projects.html"]
+            "load": [
+                "all-forest-stewardship.html",
+                "all-management-projects.html",
+                "select-forest-stewardship.html"]
         },
         {
             "name": "legend",
             //"file": "https://arcgis.dnr.state.mn.us/gis/template/js/t_legend.js", //Dev file
             "file": "js/t_legend.js", //Local file
             "type": "button",
-            "load": ["all-forest-stewardship.html", "all-management-projects.html"]
+            "load": [
+                "all-forest-stewardship.html",
+                "all-management-projects.html",
+                "select-forest-stewardship.html"]
         },
         {
             "name": "search",
             //"file": "https://arcgis.dnr.state.mn.us/gis/template/js/t_search.js", //Dev file
             "file": "js/t_search.js", //Local file
             "type": "button",
-            "load": ["all-forest-stewardship.html", "all-management-projects.html"]
+            "load": [
+                "all-forest-stewardship.html",
+                "all-management-projects.html",
+                "select-forest-stewardship.html"]
         },
         {
             "name": "splashscreen",

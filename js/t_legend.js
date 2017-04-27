@@ -3,7 +3,7 @@ class CustomLegend {
 
     }
 
-    get_Panel() {
+    get_Panel() {        
         var layerCbx = "";
         
         if(map._layers.management_plans){
@@ -13,6 +13,10 @@ class CustomLegend {
         if(map._layers.project_areas){
             layerCbx = '<input type="checkbox" id="cbx_project_areas" checked="checked"> Project Areas' +
                        '<div class="legend_boxes" id="project_areas_legend"></div>' 
+        };
+        if(map._layers.graphicsLayer2){
+            layerCbx = '<input type="checkbox" id="cbx_management_plans_sel" checked="checked"> Forest Stewardship Plans' +
+                       '<div class="legend_boxes" id="management_plans_legend"></div>' 
         };
             
         return '<div id="legend-tab" class="aside-content" style="display:none">' +

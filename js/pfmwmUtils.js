@@ -92,6 +92,7 @@ function delete_cookies() {
     document.cookie = "lcGid" + expire;
     document.cookie = "mpGid" + expire;
     document.cookie = "paGid" + expire;
+    document.cookie = "aorId" + expire;
     email = "";
     role = "";
     fullname = "";
@@ -120,6 +121,12 @@ function goToPaDetails(paGidIn, prevPage) {
     document.cookie = "paGid="+paGidIn;
     document.cookie = "prevpage="+prevPage;
     window.location.href = "project-area-details.html";
+}
+
+function goToSelStewMap(aorIdIn, prevPage){
+    document.cookie = "aorId="+aorIdIn;
+    document.cookie = "prevpage="+prevPage;
+    window.location.href = "select-forest-stewardship.html";
 }
 
 function ceDetailsOpen(ceGid) {

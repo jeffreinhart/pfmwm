@@ -4,14 +4,43 @@ var lcArr = [];
 var spArr = [];
 
 require([
+    "esri/map", "esri/layers/FeatureLayer", "esri/geometry/Extent",
     "dojo/dom",
     "dojo/domReady!"
 ], function(
+    Map, FeatureLayer, Extent,
     dom
 ){   
     Config_Load();
     
     setEventListeners();
+    
+    // map for CFM Service Areas
+    var bounds = new Extent({
+        "xmin":189775,
+        "ymin":4816305,
+        "xmax":761655,
+        "ymax":5472427,
+        "spatialReference":{"wkid":26915}
+    })
+    map = new Map("aor_map", {
+        extent: bounds,
+        slider: false,
+        logo: false,
+        isPan: false
+    });
+    aorConfig = CONFIG.layers.pfm_aors;
+    aorFl = new FeatureLayer(aorConfig.url,{
+        dataAttributes: aorConfig.outFields
+    });
+    dojo.connect(aorFl, "onClick", function(evt){
+        goToSelStewMap(evt.graphic.attributes.aor_id, pageName);
+    })
+    map.addLayer(aorFl);
+    map.on("load", function(){
+        map.disablePan();
+    })
+    $('#aor_map_container').hide();
     
     // build registration number autocomplete
     document.cookie = "mpGid=";

@@ -44,6 +44,14 @@ function setEventListeners(){
     $('#go_project_area_details').click(function(){
         goPaDetailsDgv();
     });
+    
+    $('#aor_map_close').click(function(){
+        $('#aor_map_container').hide();
+    })
+    
+    $('#open_aor_map').click(function(){
+        $('#aor_map_container').show();
+    })
 }
 
 function setCustomEventListeners(){
@@ -96,10 +104,17 @@ function setCustomEventListeners(){
         map._layers.management_plans.setVisibility(this.checked);
     });
     
-        //First remove
+    //First remove
     $("#cbx_project_areas").unbind('click');
     //Then set events
     $("#cbx_project_areas").click(function(){
         map._layers.project_areas.setVisibility(this.checked);
+    });
+    
+    //First remove
+    $("#cbx_management_plans_sel").unbind('click');
+    //Then set events
+    $("#cbx_management_plans_sel").click(function(){
+        map._layers.graphicsLayer2.setVisibility(this.checked);
     });
 }

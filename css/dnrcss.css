@@ -61,6 +61,12 @@ h2 {
     font-weight: bold;
 }
 
+.selector_instruction{
+    position: absolute;
+    z-index: 50;
+    color: #FFF;
+}
+
 legend, h3 {
     font-size: 14px;
     font-weight: bold;
@@ -123,6 +129,21 @@ form {
     z-index: 20;
     border: 1px solid #cccccc;
     background-color: #6699cc;
+    border-radius: 4px;
+    padding:8px;
+}
+
+#aor_map_container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 400px;
+    width: 300px;
+    margin-top: -200px;
+    margin-left: -150px;
+    z-index: 20;
+    border: 1px solid #cccccc;
+    background-color: #444;
     border-radius: 4px;
     padding:8px;
 }
@@ -197,6 +218,13 @@ label[for*=radioDir] {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+#aor_map {
+    position: absolute;
+    z-index: 30;
+    height: 95%;
+    width: 95%;
 }
 
 /* stew plan details map div */
@@ -631,6 +659,13 @@ a.close-tab:hover {
     background: #003865;
     color: #FFF;
     margin-top: 4px;
+}
+
+#aor_map_close{
+    position: absolute;
+    z-index: 40;
+    left: 88%;
+    top: 10px;
 }
 
 .btn:hover {

@@ -213,8 +213,7 @@ function Config_Load() {
 
 function editCeDetailsDgv() {
     var rowCeDgv = gridCe.selection.getSelected();
-    var ceGid = rowCeDgv[0]["contact_events.globalid"][0];
-    ceDetailsOpen(ceGid);
+    ceDetailsOpen(rowCeDgv);
 }// end goCeDetailsDgv
 
 function goMpPwDetailsDgv() {

@@ -129,8 +129,100 @@ function goToSelStewMap(aorIdIn, prevPage){
     window.location.href = "select-forest-stewardship.html";
 }
 
-function ceDetailsOpen(ceGid) {
-    var htmlStr = '<p>'+ceGid+'</p>' +
+function ceDetailsOpen(rowDgv) {
+    console.log(rowDgv);
+    var htmlStr = '<h2>Contact Event Details</h2>' +
+        '<form>'+
+            '<input id="contact_events.globalid" type="hidden" value="'+
+            rowDgv[0]["contact_events.globalid"][0]+'" >'+
+            '<div class="row">'+
+                '<div class="col-xs-4">'+
+                    '<label for="contact_events.contact_date">Date</label>'+
+                '</div>'+
+                '<div class="col-xs-8">'+
+                    '<input id="contact_events.contact_date" type="text" value="'+
+                    rowDgv[0]["contact_events.contact_date"][0]+
+                    '" disabled>'+
+                '</div>'+
+            '</div>'
+    switch(pageName){
+        case 'land-contact-details.html':
+            htmlStr += '<div class="row">'+
+                '<div class="col-xs-4">'+
+                    '<label for="dnr_staff">DNR Staff</label>'+
+                '</div>'+
+                '<div class="col-xs-8">'+
+                    '<input id="dnr_staff" type="text" value="'+
+                    rowDgv[0]["dnr_staff"][0]+
+                    '" disabled>'+
+                '</div>'+
+            '</div>'
+        break;
+        case 'service-provider-details.html':
+            htmlStr += '<div class="row">'+
+                '<div class="col-xs-4">'+
+                    '<label for="land_contact">Land Contact</label>'+
+                '</div>'+
+                '<div class="col-xs-8">'+
+                    '<input id="land_contact" type="text" value="'+
+                    rowDgv[0]["land_contact"][0]+
+                    '" disabled>'+
+                '</div>'+
+            '</div>'
+        break;
+    } // end switch
+    htmlStr += ''+
+            '</div>'+'<div class="row">'+
+                '<div class="col-xs-4">'+
+                    '<label for="partner_forester">Partner Forester</label>'+
+                '</div>'+
+                '<div class="col-xs-8">'+
+                    '<input id="partner_forester" type="text" value="'+
+                    rowDgv[0]["partner_forester"][0]+
+                    '" disabled>'+
+                '</div>'+
+            '</div>'+
+            '</div>'+'<div class="row">'+
+                '<div class="col-xs-4">'+
+                    '<label for="contact_events.contact_events.subject">Subject</label>'+
+                '</div>'+
+                '<div class="col-xs-8">'+
+                    '<input id="contact_events.subject" type="text" value="'+
+                    rowDgv[0]["contact_events.subject"][0]+
+                    '" disabled>'+
+                '</div>'+
+            '</div>'+
+            '</div>'+'<div class="row">'+
+                '<div class="col-xs-4">'+
+                    '<label for="contact_events.contact_event_type">Type</label>'+
+                '</div>'+
+                '<div class="col-xs-8">'+
+                    '<input id="contact_events.contact_event_type" type="text" value="'+
+                    rowDgv[0]["contact_events.contact_event_type"][0]+
+                    '" disabled>'+
+                '</div>'+
+            '</div>'+
+            '</div>'+'<div class="row">'+
+                '<div class="col-xs-4">'+
+                    '<label for="contact_events.summary">Summary</label>'+
+                '</div>'+
+                '<div class="col-xs-8">'+
+                    '<input id="contact_events.summary" type="text" value="'+
+                    rowDgv[0]["contact_events.summary"][0]+
+                    '" disabled>'+
+                '</div>'+
+            '</div>'+
+            '</div>'+'<div class="row">'+
+                '<div class="col-xs-4">'+
+                    '<label for="contact_events.notes">Notes</label>'+
+                '</div>'+
+                '<div class="col-xs-8">'+
+                    '<input id="contact_events.notes" type="text" value="'+
+                    rowDgv[0]["contact_events.notes"][0]+
+                    '" disabled>'+
+                '</div>'+
+            '</div>'+
+        '</form>'+
         '<button class="btn btn-inline" onclick="ceDetailsCancel()">Cancel</button>';
     $('#contact_event_form').html(htmlStr);
     $('#contact_event_form').show();
